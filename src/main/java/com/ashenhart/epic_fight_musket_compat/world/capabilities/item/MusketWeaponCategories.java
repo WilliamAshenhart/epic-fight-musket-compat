@@ -7,8 +7,8 @@ import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
 import java.util.function.Function;
 
-public enum MusketWeaponCategories implements WeaponCategory {
-    MUSKET, PISTOL, BAYONET;
+public enum MusketWeaponCategories implements WeaponCategory, Function<Item, CapabilityItem.Builder> {
+    MUSKET, BAYONET, PISTOL;
 
     final int id;
 
@@ -20,7 +20,12 @@ public enum MusketWeaponCategories implements WeaponCategory {
     public int universalOrdinal() {
         return this.id;
     }
-        public CapabilityItem.Builder apply(Item item) {
-        return WeaponCategoryMapper.apply(item, this);
+
+    @Override
+    public CapabilityItem.Builder apply(Item item) {
+        return null;
+    }
+
+    public static class Builder {
     }
 }
