@@ -4,12 +4,15 @@ import java.util.function.Function;
 
 import com.ashenhart.epic_fight_musket_compat.gameassets.Animations;
 import com.ashenhart.epic_fight_musket_compat.gameassets.MusketColliderPreset;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import com.ashenhart.epic_fight_musket_compat.Epic_fight_musket_compat;
 
 import yesman.epicfight.api.animation.LivingMotions;
+import yesman.epicfight.api.forgeevent.WeaponCapabilityPresetRegistryEvent;
 import yesman.epicfight.gameasset.ColliderPreset;
 import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
@@ -86,5 +89,12 @@ public class WeaponCapabilityPresets {
 
         return builder;
     };
+
+    @SubscribeEvent
+    public static void registerMovesets(WeaponCapabilityPresetRegistryEvent event) {
+        event.getTypeEntry().put(new ResourceLocation(Epic_fight_musket_compat.MODID,"musket"), MUSKET);
+        event.getTypeEntry().put(new ResourceLocation(Epic_fight_musket_compat.MODID,"pistol"), PISTOL);
+        event.getTypeEntry().put(new ResourceLocation(Epic_fight_musket_compat.MODID,"bayonet"), BAYONET);
+    }
 }
 
