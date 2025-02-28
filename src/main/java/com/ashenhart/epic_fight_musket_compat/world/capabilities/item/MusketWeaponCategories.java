@@ -20,12 +20,8 @@ public enum MusketWeaponCategories implements WeaponCategory, Function<Item, Cap
     public int universalOrdinal() {
         return this.id;
     }
-
     @Override
     public CapabilityItem.Builder apply(Item item) {
-        return null;
-    }
-
-    public static class Builder {
+        return WeaponCategoryMapper.apply(item, this);
     }
 }

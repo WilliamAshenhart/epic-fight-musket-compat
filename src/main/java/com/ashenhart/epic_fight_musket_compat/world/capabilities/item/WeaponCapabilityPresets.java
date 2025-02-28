@@ -1,13 +1,10 @@
 package com.ashenhart.epic_fight_musket_compat.world.capabilities.item;
-import java.util.Map;
 import java.util.function.Function;
 
 
 import com.ashenhart.epic_fight_musket_compat.gameassets.Animations;
 import com.ashenhart.epic_fight_musket_compat.gameassets.MusketColliderPreset;
-import com.google.common.collect.Maps;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -18,7 +15,6 @@ import yesman.epicfight.api.animation.LivingMotions;
 import yesman.epicfight.api.forgeevent.WeaponCapabilityPresetRegistryEvent;
 import yesman.epicfight.gameasset.ColliderPreset;
 import yesman.epicfight.gameasset.EpicFightSounds;
-import yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import yesman.epicfight.world.capabilities.item.CapabilityItem.Styles;
 import yesman.epicfight.world.capabilities.item.WeaponCapability;
@@ -94,20 +90,11 @@ public class WeaponCapabilityPresets {
         return builder;
     };
 
-    public WeaponCapabilityPresets() {
-    }
-
-    private static boolean CheckPlayer(LivingEntityPatch<?> playerPatch) {
-        return playerPatch.getOriginal().getType() != EntityType.PLAYER;
-    }
-
-    private static final Map<String, Function<Item, CapabilityItem.Builder>> PRESETS = Maps.newHashMap();
-
     @SubscribeEvent
-    public static void register(WeaponCapabilityPresetRegistryEvent event) {
+    public static void registerMovesets(WeaponCapabilityPresetRegistryEvent event) {
         event.getTypeEntry().put(new ResourceLocation(Epic_fight_musket_compat.MODID,"musket"), MUSKET);
-        event.getTypeEntry().put(new ResourceLocation(Epic_fight_musket_compat.MODID,"pistol"), PISTOL);
         event.getTypeEntry().put(new ResourceLocation(Epic_fight_musket_compat.MODID,"bayonet"), BAYONET);
+        event.getTypeEntry().put(new ResourceLocation(Epic_fight_musket_compat.MODID,"pistol"), PISTOL);
     }
 }
 

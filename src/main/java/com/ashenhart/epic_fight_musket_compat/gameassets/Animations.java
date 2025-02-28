@@ -37,7 +37,7 @@ public class Animations {
         KNEEL_MUSKET = new MovementAnimation(true, "biped/living/kneel_musket", biped);
         SNEAK_MUSKET = new MovementAnimation(true, "biped/living/sneak_musket", biped);
         RUN_MUSKET = new MovementAnimation(true, "biped/living/run_musket", biped);
-        RELOAD_MUSKET = new MovementAnimation(true, "biped/living/reload_musket", biped);
+        RELOAD_MUSKET = new StaticAnimation(true, "biped/living/reload_musket", biped);
         BAYONET_CHARGE = new BasicAttackAnimation(0.1F, 0.0F, 0.5F, 0.8F, null, biped.toolR, "biped/combat/bayonet_charge", biped)
                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.6F))
                 .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, ((dynamicAnimation, livingEntityPatch, v, v1, v2) -> 1.0F));
@@ -49,7 +49,7 @@ public class Animations {
                 .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, ((dynamicAnimation, livingEntityPatch, v, v1, v2) -> 1.0F));
         HOLD_BAYONET = new StaticAnimation(true, "biped/living/hold_bayonet", biped);
         HOLD_PISTOL = new StaticAnimation(true, "biped/living/hold_pistol", biped);
-        RUN_PISTOL = new StaticAnimation(true, "biped/living/run_pistol", biped);
+        RUN_PISTOL = new MovementAnimation(true, "biped/living/run_pistol", biped);
         RELOAD_PISTOL = new StaticAnimation(true, "biped/living/reload_pistol", biped);
         PISTOL_AUTO_1 = new BasicAttackAnimation(0.1F, 0.0F, 0.4F, 0.6F, null, biped.toolR, "biped/combat/pistol_auto_1", biped)
                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.0F))
