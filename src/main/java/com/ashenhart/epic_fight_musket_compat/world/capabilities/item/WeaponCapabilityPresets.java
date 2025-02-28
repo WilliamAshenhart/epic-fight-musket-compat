@@ -24,6 +24,7 @@ public class WeaponCapabilityPresets {
     public static final Function<Item, CapabilityItem.Builder> MUSKET = (item) -> {
         WeaponCapability.Builder builder = WeaponCapability.builder()
                 .category(MusketWeaponCategories.MUSKET)
+                .zoomInType(CapabilityItem.ZoomInType.AIMING)
                 .styleProvider((playerpatch) -> Styles.RANGED)
                 .collider(MusketColliderPreset.MUSKET)
                 .swingSound(EpicFightSounds.WHOOSH.get())
@@ -46,6 +47,7 @@ public class WeaponCapabilityPresets {
     };
     public static final Function<Item, CapabilityItem.Builder> BAYONET = (item) -> {
         WeaponCapability.Builder builder = WeaponCapability.builder()
+                .zoomInType(CapabilityItem.ZoomInType.AIMING)
                 .category(MusketWeaponCategories.BAYONET)
                 .styleProvider((playerpatch) -> Styles.RANGED)
                 .collider(MusketColliderPreset.MUSKET)
@@ -70,6 +72,7 @@ public class WeaponCapabilityPresets {
     };
     public static final Function<Item, CapabilityItem.Builder> PISTOL = (item) -> {
         WeaponCapability.Builder builder = WeaponCapability.builder()
+                .zoomInType(CapabilityItem.ZoomInType.AIMING)
                 .category(MusketWeaponCategories.PISTOL)
                 .styleProvider((playerpatch) -> Styles.RANGED)
                 .collider(ColliderPreset.FIST)
@@ -91,10 +94,9 @@ public class WeaponCapabilityPresets {
     };
 
     @SubscribeEvent
-    public static void registerMovesets(WeaponCapabilityPresetRegistryEvent event) {
-        event.getTypeEntry().put(new ResourceLocation(Epic_fight_musket_compat.MODID,"musket"), MUSKET);
-        event.getTypeEntry().put(new ResourceLocation(Epic_fight_musket_compat.MODID,"bayonet"), BAYONET);
-        event.getTypeEntry().put(new ResourceLocation(Epic_fight_musket_compat.MODID,"pistol"), PISTOL);
+    public static void register(WeaponCapabilityPresetRegistryEvent event) {
+        event.getTypeEntry().put(new ResourceLocation(Epic_fight_musket_compat.MODID, "musket"), MUSKET);
+        event.getTypeEntry().put(new ResourceLocation(Epic_fight_musket_compat.MODID, "bayonet"), BAYONET);
+        event.getTypeEntry().put(new ResourceLocation(Epic_fight_musket_compat.MODID, "pistol"), PISTOL);
     }
 }
-

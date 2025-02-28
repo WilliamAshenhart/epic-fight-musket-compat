@@ -23,5 +23,5 @@ public class MusketColliderPreset {
         return collider;
     }
 
-    public static final Collider MUSKET = registerCollider(new ResourceLocation(Epic_fight_musket_compat.MODID, "musket"), new MultiOBBCollider(3, 0.4D, 0.7D, 0.4D, 0D, -0.5D, 0D));
+    public static final Collider MUSKET = registerCollider(new ResourceLocation(Epic_fight_musket_compat.MODID, "musket"), new MultiOBBCollider(3, 0.4D, 0.7D, 0.4D, 0D, 0.5D, 0D));
 }
