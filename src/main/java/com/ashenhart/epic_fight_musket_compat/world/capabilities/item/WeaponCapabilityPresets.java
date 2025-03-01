@@ -22,7 +22,7 @@ import yesman.epicfight.world.capabilities.item.WeaponCapability;
 @Mod.EventBusSubscriber(modid = Epic_fight_musket_compat.MODID , bus = Mod.EventBusSubscriber.Bus.MOD)
 public class WeaponCapabilityPresets {
     public static final Function<Item, CapabilityItem.Builder> MUSKET = (item) -> {
-        WeaponCapability.Builder builder = WeaponCapability.builder()
+        CapabilityItem.Builder builder = WeaponCapability.builder()
                 .category(MusketWeaponCategories.MUSKET)
                 .zoomInType(CapabilityItem.ZoomInType.AIMING)
                 .styleProvider((playerpatch) -> Styles.RANGED)
@@ -46,7 +46,7 @@ public class WeaponCapabilityPresets {
         return builder;
     };
     public static final Function<Item, CapabilityItem.Builder> BAYONET = (item) -> {
-        WeaponCapability.Builder builder = WeaponCapability.builder()
+        CapabilityItem.Builder builder = WeaponCapability.builder()
                 .zoomInType(CapabilityItem.ZoomInType.AIMING)
                 .category(MusketWeaponCategories.BAYONET)
                 .styleProvider((playerpatch) -> Styles.RANGED)
@@ -71,7 +71,7 @@ public class WeaponCapabilityPresets {
         return builder;
     };
     public static final Function<Item, CapabilityItem.Builder> PISTOL = (item) -> {
-        WeaponCapability.Builder builder = WeaponCapability.builder()
+        CapabilityItem.Builder builder = WeaponCapability.builder()
                 .zoomInType(CapabilityItem.ZoomInType.AIMING)
                 .category(MusketWeaponCategories.PISTOL)
                 .styleProvider((playerpatch) -> Styles.RANGED)
