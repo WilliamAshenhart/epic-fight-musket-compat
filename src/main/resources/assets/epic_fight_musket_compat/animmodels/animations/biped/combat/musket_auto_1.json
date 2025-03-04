@@ -1,7 +1,4 @@
 {
-  "constructor": {
-    "invocation_command": "(0.17#F,epic_fight_musket_compat:biped/combat/musket_auto_1#java.lang.String,epicfight:entity/biped#yesman.epicfight.api.model.Armature,[(0.0#F,0.3#F,0.4#F,0.5#F,0.6#F,0.6#F,MAIN_HAND#net.minecraft.world.InteractionHand,epicfight:entity/biped.Hand_R#yesman.epicfight.api.animation.Joint,(3#I,0.4d#D,0.7d#D,0.4d#D,0.0d#D,0.5d#D,0.0d#D)#yesman.epicfight.api.collider.MultiOBBCollider)]#yesman.epicfight.api.animation.types.AttackAnimation$Phase)#yesman.epicfight.api.animation.types.AttackAnimation"
-  },
   "animation": [
     {
       "name": "Root",

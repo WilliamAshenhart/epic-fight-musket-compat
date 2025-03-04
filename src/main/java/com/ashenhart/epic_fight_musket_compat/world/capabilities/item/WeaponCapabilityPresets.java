@@ -79,7 +79,7 @@ public class WeaponCapabilityPresets {
                 .swingSound(EpicFightSounds.WHOOSH.get())
                 .hitSound(EpicFightSounds.BLUNT_HIT.get())
                 .canBePlacedOffhand(true)
-                .newStyleCombo(Styles.RANGED, Animations.PISTOL_AUTO_1, Animations.PISTOL_AUTO_1, Animations.PISTOL_AUTO_1)
+                .newStyleCombo(Styles.RANGED, yesman.epicfight.gameasset.Animations.FIST_AUTO1, yesman.epicfight.gameasset.Animations.FIST_AUTO3, Animations.PISTOL_AUTO_1, Animations.PISTOL_DASH, yesman.epicfight.gameasset.Animations.SWORD_AIR_SLASH)
                 .livingMotionModifier(Styles.RANGED, LivingMotions.IDLE, Animations.HOLD_PISTOL)
                 .livingMotionModifier(Styles.RANGED, LivingMotions.WALK, Animations.HOLD_PISTOL)
                 .livingMotionModifier(Styles.RANGED, LivingMotions.CHASE, Animations.HOLD_PISTOL)
@@ -92,11 +92,31 @@ public class WeaponCapabilityPresets {
 
         return builder;
     };
+    public static final Function<Item, CapabilityItem.Builder> BANNER = (item) -> {
+        CapabilityItem.Builder builder = WeaponCapability.builder()
+                .category(MusketWeaponCategories.BANNER)
+                .styleProvider((playerpatch) -> Styles.TWO_HAND)
+                .collider(ColliderPreset.FIST)
+                .swingSound(EpicFightSounds.WHOOSH.get())
+                .hitSound(EpicFightSounds.BLUNT_HIT.get())
+                .canBePlacedOffhand(false)
+                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.IDLE, Animations.HOLD_BANNER)
+                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.WALK, Animations.HOLD_BANNER)
+                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.CHASE, Animations.HOLD_BANNER)
+                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.RUN, Animations.HOLD_BANNER)
+                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.JUMP, Animations.HOLD_BANNER)
+                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.KNEEL, Animations.HOLD_BANNER)
+                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.SNEAK, Animations.HOLD_BANNER)
+                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.SWIM, Animations.HOLD_BANNER);
+
+        return builder;
+    };
 
     @SubscribeEvent
     public static void register(WeaponCapabilityPresetRegistryEvent event) {
         event.getTypeEntry().put(new ResourceLocation(Epic_fight_musket_compat.MODID, "musket"), MUSKET);
         event.getTypeEntry().put(new ResourceLocation(Epic_fight_musket_compat.MODID, "bayonet"), BAYONET);
         event.getTypeEntry().put(new ResourceLocation(Epic_fight_musket_compat.MODID, "pistol"), PISTOL);
+        event.getTypeEntry().put(new ResourceLocation(Epic_fight_musket_compat.MODID, "banner"), BANNER);
     }
 }
