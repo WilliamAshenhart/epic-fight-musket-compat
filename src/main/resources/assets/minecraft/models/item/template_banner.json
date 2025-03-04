@@ -7,7 +7,7 @@
     "display": {
         "thirdperson_righthand": {
             "rotation": [ 0, 180, 0 ],
-            "translation": [ 0, 16, 0.5],
+            "translation": [ 0, 16, 0],
             "scale":[ 1.2, 1.2, 1.2]
         },
         "firstperson_righthand": {
