@@ -25,6 +25,8 @@ public class Animations {
     public static StaticAnimation PISTOL_AUTO_1;
     public static StaticAnimation PISTOL_DASH;
     public static StaticAnimation HOLD_BANNER;
+    public static StaticAnimation SNEAK_BANNER;
+    public static StaticAnimation KNEEL_BANNER;
 
     @SubscribeEvent
     public static void registerAnimations(AnimationRegistryEvent event) {
@@ -60,5 +62,7 @@ public class Animations {
                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.0F))
                 .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, ((dynamicAnimation, livingEntityPatch, v, v1, v2) -> 1.0F));
         HOLD_BANNER = new StaticAnimation(true, "biped/living/hold_banner", biped);
+        KNEEL_BANNER = new StaticAnimation(true, "biped/living/kneel_banner", biped);
+        SNEAK_BANNER = new StaticAnimation(true, "biped/living/sneak_banner", biped);
     }
 }

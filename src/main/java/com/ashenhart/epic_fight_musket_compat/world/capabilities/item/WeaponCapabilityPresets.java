@@ -105,8 +105,8 @@ public class WeaponCapabilityPresets {
                 .livingMotionModifier(Styles.TWO_HAND, LivingMotions.CHASE, Animations.HOLD_BANNER)
                 .livingMotionModifier(Styles.TWO_HAND, LivingMotions.RUN, Animations.HOLD_BANNER)
                 .livingMotionModifier(Styles.TWO_HAND, LivingMotions.JUMP, Animations.HOLD_BANNER)
-                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.KNEEL, Animations.HOLD_BANNER)
-                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.SNEAK, Animations.HOLD_BANNER)
+                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.KNEEL, Animations.KNEEL_BANNER)
+                .livingMotionModifier(Styles.TWO_HAND, LivingMotions.SNEAK, Animations.SNEAK_BANNER)
                 .livingMotionModifier(Styles.TWO_HAND, LivingMotions.SWIM, Animations.HOLD_BANNER);
 
         return builder;
