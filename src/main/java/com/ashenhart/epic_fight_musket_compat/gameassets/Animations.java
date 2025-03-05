@@ -60,7 +60,7 @@ public class Animations {
                 .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, ((dynamicAnimation, livingEntityPatch, v, v1, v2) -> 1.0F));
         PISTOL_DASH = new DashAttackAnimation(0.1F, 0.0F, 0.2F, 0.4F, 0.65F, null, biped.toolR, "biped/combat/pistol_dash", biped)
                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.0F))
-                .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, yesman.epicfight.gameasset.Animations.ReusableSources.CONSTANT_ONE);
+                .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, ((dynamicAnimation, livingEntityPatch, v, v1, v2) -> 1.0F));
         HOLD_BANNER = new StaticAnimation(true, "biped/living/hold_banner", biped);
         KNEEL_BANNER = new StaticAnimation(true, "biped/living/kneel_banner", biped);
         SNEAK_BANNER = new StaticAnimation(true, "biped/living/sneak_banner", biped);
