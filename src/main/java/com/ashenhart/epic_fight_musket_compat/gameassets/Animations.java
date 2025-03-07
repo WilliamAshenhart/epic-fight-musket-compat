@@ -27,6 +27,7 @@ public class Animations {
     public static StaticAnimation HOLD_BANNER;
     public static StaticAnimation SNEAK_BANNER;
     public static StaticAnimation KNEEL_BANNER;
+    public static StaticAnimation HOLD_SCOPE;
 
     @SubscribeEvent
     public static void registerAnimations(AnimationRegistryEvent event) {
@@ -64,5 +65,6 @@ public class Animations {
         HOLD_BANNER = new StaticAnimation(true, "biped/living/hold_banner", biped);
         KNEEL_BANNER = new StaticAnimation(true, "biped/living/kneel_banner", biped);
         SNEAK_BANNER = new StaticAnimation(true, "biped/living/sneak_banner", biped);
+        HOLD_SCOPE = new StaticAnimation(true, "biped/living/hold_scope", biped);
     }
 }

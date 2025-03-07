@@ -8,7 +8,7 @@ import yesman.epicfight.world.capabilities.item.WeaponCategory;
 import java.util.function.Function;
 
 public enum MusketWeaponCategories implements WeaponCategory, Function<Item, CapabilityItem.Builder> {
-    MUSKET, BAYONET, PISTOL, BANNER;
+    MUSKET, BAYONET, PISTOL, BANNER, SCOPED;
 
     final int id;
 

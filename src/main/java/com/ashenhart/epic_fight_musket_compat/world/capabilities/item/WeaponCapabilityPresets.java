@@ -111,6 +111,30 @@ public class WeaponCapabilityPresets {
 
         return builder;
     };
+    public static final Function<Item, CapabilityItem.Builder> SCOPED = (item) -> {
+        CapabilityItem.Builder builder = WeaponCapability.builder()
+                .category(MusketWeaponCategories.SCOPED)
+                .zoomInType(CapabilityItem.ZoomInType.AIMING)
+                .styleProvider((playerpatch) -> Styles.RANGED)
+                .collider(MusketColliderPreset.MUSKET)
+                .swingSound(EpicFightSounds.WHOOSH.get())
+                .hitSound(EpicFightSounds.BLUNT_HIT.get())
+                .canBePlacedOffhand(false)
+                .newStyleCombo(Styles.RANGED, Animations.MUSKET_AUTO_1, Animations.MUSKET_AUTO_1, yesman.epicfight.gameasset.Animations.SPEAR_TWOHAND_AIR_SLASH)
+                .livingMotionModifier(Styles.RANGED, LivingMotions.IDLE, Animations.HOLD_SCOPE)
+                .livingMotionModifier(Styles.RANGED, LivingMotions.WALK, Animations.HOLD_SCOPE)
+                .livingMotionModifier(Styles.RANGED, LivingMotions.CHASE, Animations.RUN_MUSKET)
+                .livingMotionModifier(Styles.RANGED, LivingMotions.RUN, Animations.RUN_MUSKET)
+                .livingMotionModifier(Styles.RANGED, LivingMotions.JUMP, Animations.HOLD_SCOPE)
+                .livingMotionModifier(Styles.RANGED, LivingMotions.KNEEL, Animations.KNEEL_MUSKET)
+                .livingMotionModifier(Styles.RANGED, LivingMotions.SNEAK, Animations.SNEAK_MUSKET)
+                .livingMotionModifier(Styles.RANGED, LivingMotions.SWIM, Animations.HOLD_SCOPE)
+                .livingMotionModifier(Styles.RANGED, LivingMotions.AIM, yesman.epicfight.gameasset.Animations.BIPED_CROSSBOW_AIM)
+                .livingMotionModifier(Styles.RANGED, LivingMotions.SHOT, yesman.epicfight.gameasset.Animations.BIPED_CROSSBOW_SHOT)
+                .livingMotionModifier(Styles.RANGED, LivingMotions.RELOAD, Animations.RELOAD_MUSKET);
+
+        return builder;
+    };
 
     @SubscribeEvent
     public static void register(WeaponCapabilityPresetRegistryEvent event) {
@@ -118,5 +142,6 @@ public class WeaponCapabilityPresets {
         event.getTypeEntry().put(new ResourceLocation(Epic_fight_musket_compat.MODID, "bayonet"), BAYONET);
         event.getTypeEntry().put(new ResourceLocation(Epic_fight_musket_compat.MODID, "pistol"), PISTOL);
         event.getTypeEntry().put(new ResourceLocation(Epic_fight_musket_compat.MODID, "banner"), BANNER);
+        event.getTypeEntry().put(new ResourceLocation(Epic_fight_musket_compat.MODID, "scoped"), SCOPED);
     }
 }
