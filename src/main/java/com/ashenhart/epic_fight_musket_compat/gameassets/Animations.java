@@ -46,7 +46,7 @@ public class Animations {
         BAYONET_CHARGE = new BasicAttackAnimation(0.1F, 0.2F, 0.4F, 0.6F, 0.9F, null, biped.toolR, "biped/combat/bayonet_charge", biped)
                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.6F))
                 .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, ((dynamicAnimation, livingEntityPatch, v, v1, v2) -> 1.0F));
-        MUSKET_AUTO_1 = new BasicAttackAnimation(0.1F, 0.4F, 0.5F, 0.6F, null, biped.toolR, "biped/combat/musket_auto_1", biped)
+        MUSKET_AUTO_1 = new BasicAttackAnimation(0.1F, 0.0F, 0.2F, 0.4F, null, biped.toolR, "biped/combat/musket_auto_1", biped)
                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.0F))
                 .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, ((dynamicAnimation, livingEntityPatch, v, v1, v2) -> 1.0F));
         BAYONET = new BasicAttackAnimation(0.1F, 0.4F, 0.6F, 0.7F, null, biped.toolR, "biped/combat/bayonet", biped)
