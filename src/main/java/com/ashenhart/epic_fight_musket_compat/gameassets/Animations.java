@@ -20,6 +20,9 @@ public class Animations {
     public static StaticAnimation BAYONET;
     public static StaticAnimation BAYONET_CHARGE;
     public static StaticAnimation HOLD_PISTOL;
+    public static StaticAnimation KNEEL_PISTOL;
+    public static StaticAnimation SNEAK_PISTOL;
+    public static StaticAnimation WALK_PISTOL;
     public static StaticAnimation RUN_PISTOL;
     public static StaticAnimation RELOAD_PISTOL;
     public static StaticAnimation PISTOL_AUTO_1;
@@ -54,7 +57,10 @@ public class Animations {
                 .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, ((dynamicAnimation, livingEntityPatch, v, v1, v2) -> 1.0F));
         HOLD_BAYONET = new StaticAnimation(true, "biped/living/hold_bayonet", biped);
         HOLD_PISTOL = new StaticAnimation(true, "biped/living/hold_pistol", biped);
+        KNEEL_PISTOL = new StaticAnimation(true, "biped/living/kneel_pistol", biped);
+        SNEAK_PISTOL = new StaticAnimation(true, "biped/living/sneak_pistol", biped);
         RUN_PISTOL = new MovementAnimation(true, "biped/living/run_pistol", biped);
+        WALK_PISTOL = new MovementAnimation(true, "biped/living/walk_pistol", biped);
         RELOAD_PISTOL = new StaticAnimation(true, "biped/living/reload_pistol", biped);
         PISTOL_AUTO_1 = new BasicAttackAnimation(0.1F, 0.5F, 0.6F, 0.8F, null, biped.toolR, "biped/combat/pistol_auto_1", biped)
                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.0F))

@@ -7,10 +7,6 @@
       "type": "epicfight:upper_joints"
     },
     {
-      "livingmotion": "IDLE",
-      "type": "epicfight:none"
-    },
-    {
       "livingmotion": "WALK",
       "type": "epicfight:root_upper_joints"
     },

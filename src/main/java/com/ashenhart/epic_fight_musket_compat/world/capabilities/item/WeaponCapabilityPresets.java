@@ -81,13 +81,12 @@ public class WeaponCapabilityPresets {
                 .canBePlacedOffhand(true)
                 .newStyleCombo(Styles.RANGED, yesman.epicfight.gameasset.Animations.FIST_AUTO1, yesman.epicfight.gameasset.Animations.FIST_AUTO3, Animations.PISTOL_AUTO_1, Animations.PISTOL_DASH, yesman.epicfight.gameasset.Animations.SWORD_AIR_SLASH)
                 .livingMotionModifier(Styles.RANGED, LivingMotions.IDLE, Animations.HOLD_PISTOL)
-                .livingMotionModifier(Styles.RANGED, LivingMotions.WALK, Animations.HOLD_PISTOL)
-                .livingMotionModifier(Styles.RANGED, LivingMotions.CHASE, Animations.HOLD_PISTOL)
+                .livingMotionModifier(Styles.RANGED, LivingMotions.WALK, Animations.WALK_PISTOL)
+                .livingMotionModifier(Styles.RANGED, LivingMotions.CHASE, Animations.WALK_PISTOL)
                 .livingMotionModifier(Styles.RANGED, LivingMotions.RUN, Animations.RUN_PISTOL)
                 .livingMotionModifier(Styles.RANGED, LivingMotions.JUMP, Animations.HOLD_PISTOL)
-                .livingMotionModifier(Styles.RANGED, LivingMotions.KNEEL, Animations.HOLD_PISTOL)
-                .livingMotionModifier(Styles.RANGED, LivingMotions.SNEAK, Animations.HOLD_PISTOL)
-                .livingMotionModifier(Styles.RANGED, LivingMotions.SWIM, Animations.HOLD_PISTOL)
+                .livingMotionModifier(Styles.RANGED, LivingMotions.KNEEL, Animations.KNEEL_PISTOL)
+                .livingMotionModifier(Styles.RANGED, LivingMotions.SNEAK, Animations.SNEAK_PISTOL)
                 .livingMotionModifier(Styles.RANGED, LivingMotions.RELOAD, Animations.RELOAD_PISTOL);
 
         return builder;

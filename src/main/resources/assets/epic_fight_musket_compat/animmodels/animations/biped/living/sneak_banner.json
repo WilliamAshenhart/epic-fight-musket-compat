@@ -1,7 +1,4 @@
 {
-  "constructor": {
-    "invocation_command": "(0.17#F,true#Z,musketmod:biped/sneak_banner#java.lang.String,epicfight:entity/biped#yesman.epicfight.api.model.Armature)#yesman.epicfight.api.animation.types.MovementAnimation"
-  },
   "animation": [
     {
       "name": "Root",
