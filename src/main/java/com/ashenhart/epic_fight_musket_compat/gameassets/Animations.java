@@ -11,6 +11,7 @@ import yesman.epicfight.model.armature.HumanoidArmature;
 
 public class Animations {
     public static StaticAnimation HOLD_MUSKET;
+    public static StaticAnimation WALK_MUSKET;
     public static StaticAnimation RUN_MUSKET;
     public static StaticAnimation KNEEL_MUSKET;
     public static StaticAnimation SNEAK_MUSKET;
@@ -26,6 +27,8 @@ public class Animations {
     public static StaticAnimation RUN_PISTOL;
     public static StaticAnimation RELOAD_PISTOL;
     public static StaticAnimation PISTOL_AUTO_1;
+    public static StaticAnimation PISTOL_AUTO_2;
+    public static StaticAnimation PISTOL_AUTO_3;
     public static StaticAnimation PISTOL_DASH;
     public static StaticAnimation HOLD_BANNER;
     public static StaticAnimation SNEAK_BANNER;
@@ -41,6 +44,7 @@ public class Animations {
 
         HumanoidArmature biped = Armatures.BIPED;
         HOLD_MUSKET = new StaticAnimation(true, "biped/living/hold_musket", biped);
+        WALK_MUSKET = new MovementAnimation(true, "biped/living/walk_musket", biped);
         RUN_MUSKET = new MovementAnimation(true, "biped/living/run_musket", biped);
         KNEEL_MUSKET = new MovementAnimation(true, "biped/living/kneel_musket", biped);
         SNEAK_MUSKET = new MovementAnimation(true, "biped/living/sneak_musket", biped);
@@ -64,6 +68,12 @@ public class Animations {
         RELOAD_PISTOL = new StaticAnimation(true, "biped/living/reload_pistol", biped);
         PISTOL_AUTO_1 = new BasicAttackAnimation(0.1F, 0.5F, 0.6F, 0.8F, null, biped.toolR, "biped/combat/pistol_auto_1", biped)
                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.0F))
+                .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, ((dynamicAnimation, livingEntityPatch, v, v1, v2) -> 1.0F));
+        PISTOL_AUTO_2 = new BasicAttackAnimation(0.1F, 0.3F, 0.4F, 0.8F, null, biped.toolR, "biped/combat/pistol_auto_2", biped)
+                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.3F))
+                .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, ((dynamicAnimation, livingEntityPatch, v, v1, v2) -> 1.0F));
+        PISTOL_AUTO_3 = new BasicAttackAnimation(0.1F, 0.5F, 0.6F, 0.8F, null, biped.toolR, "biped/combat/pistol_auto_3", biped)
+                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.2F))
                 .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, ((dynamicAnimation, livingEntityPatch, v, v1, v2) -> 1.0F));
         PISTOL_DASH = new DashAttackAnimation(0.1F, 0.0F, 0.2F, 0.4F, 0.65F, null, biped.toolR, "biped/combat/pistol_dash", biped)
                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.0F))
