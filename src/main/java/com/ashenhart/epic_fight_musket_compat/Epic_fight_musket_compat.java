@@ -24,6 +24,7 @@ public class Epic_fight_musket_compat {
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
         WeaponCategory.ENUM_MANAGER.registerEnumCls(MODID, MusketWeaponCategories.class);
+
         bus.addListener(Animations::registerAnimations);
 
     }

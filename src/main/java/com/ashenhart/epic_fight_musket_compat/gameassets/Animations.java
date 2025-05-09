@@ -4,83 +4,90 @@ import com.ashenhart.epic_fight_musket_compat.Epic_fight_musket_compat;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import yesman.epicfight.api.animation.property.AnimationProperty;
 import yesman.epicfight.api.animation.types.*;
-import yesman.epicfight.api.forgeevent.AnimationRegistryEvent;
-import yesman.epicfight.api.utils.math.ValueModifier;
+import yesman.epicfight.api.animation.AnimationClip;
+import yesman.epicfight.api.animation.AnimationManager;
+import yesman.epicfight.api.animation.AnimationManager.AnimationRegistryEvent;
+import yesman.epicfight.api.animation.AnimationManager.AnimationAccessor;
+import yesman.epicfight.api.animation.property.AnimationProperty.*;
+import yesman.epicfight.api.animation.types.*;
+import yesman.epicfight.api.utils.math.ValueModifier;;
 import yesman.epicfight.gameasset.Armatures;
-import yesman.epicfight.model.armature.HumanoidArmature;
 
 public class Animations {
-    public static StaticAnimation HOLD_MUSKET;
-    public static StaticAnimation WALK_MUSKET;
-    public static StaticAnimation RUN_MUSKET;
-    public static StaticAnimation KNEEL_MUSKET;
-    public static StaticAnimation SNEAK_MUSKET;
-    public static StaticAnimation RELOAD_MUSKET;
-    public static StaticAnimation MUSKET_AUTO_1;
-    public static StaticAnimation HOLD_BAYONET;
-    public static StaticAnimation BAYONET;
-    public static StaticAnimation BAYONET_CHARGE;
-    public static StaticAnimation HOLD_PISTOL;
-    public static StaticAnimation KNEEL_PISTOL;
-    public static StaticAnimation SNEAK_PISTOL;
-    public static StaticAnimation WALK_PISTOL;
-    public static StaticAnimation RUN_PISTOL;
-    public static StaticAnimation RELOAD_PISTOL;
-    public static StaticAnimation PISTOL_AUTO_1;
-    public static StaticAnimation PISTOL_AUTO_2;
-    public static StaticAnimation PISTOL_AUTO_3;
-    public static StaticAnimation PISTOL_DASH;
-    public static StaticAnimation HOLD_BANNER;
-    public static StaticAnimation SNEAK_BANNER;
-    public static StaticAnimation KNEEL_BANNER;
-    public static StaticAnimation HOLD_SCOPE;
+        public static DirectStaticAnimation EMPTY_ANIMATION = new DirectStaticAnimation() {
+            @Override
+            public void loadAnimation() {
+            }
+
+            @Override
+            public AnimationClip getAnimationClip() {
+                return AnimationClip.EMPTY_CLIP;
+            }
+        };
+
+        public static AnimationAccessor<StaticAnimation> HOLD_MUSKET;
+        public static AnimationAccessor<MovementAnimation> WALK_MUSKET;
+        public static AnimationAccessor<MovementAnimation> RUN_MUSKET;
+        public static AnimationAccessor<StaticAnimation> KNEEL_MUSKET;
+        public static AnimationAccessor<MovementAnimation> SNEAK_MUSKET;
+        public static AnimationAccessor<StaticAnimation> RELOAD_MUSKET;
+        public static AnimationAccessor<BasicAttackAnimation> MUSKET_AUTO_1;
+        public static AnimationAccessor<MovementAnimation> RUN_BAYONET;
+        public static AnimationAccessor<BasicAttackAnimation> BAYONET;
+        public static AnimationAccessor<DashAttackAnimation> BAYONET_DASH;
+        public static AnimationAccessor<StaticAnimation> HOLD_PISTOL;
+        public static AnimationAccessor<StaticAnimation> KNEEL_PISTOL;
+        public static AnimationAccessor<MovementAnimation> SNEAK_PISTOL;
+        public static AnimationAccessor<MovementAnimation> WALK_PISTOL;
+        public static AnimationAccessor<MovementAnimation> RUN_PISTOL;
+        public static AnimationAccessor<StaticAnimation> RELOAD_PISTOL;
+        public static AnimationAccessor<BasicAttackAnimation> PISTOL_AUTO_1;
+        public static AnimationAccessor<BasicAttackAnimation> PISTOL_AUTO_2;
+        public static AnimationAccessor<BasicAttackAnimation> PISTOL_AUTO_3;
+        public static AnimationAccessor<DashAttackAnimation> PISTOL_DASH;
+        public static AnimationAccessor<StaticAnimation> HOLD_BANNER;
+        public static AnimationAccessor<MovementAnimation> SNEAK_BANNER;
+        public static AnimationAccessor<StaticAnimation> KNEEL_BANNER;
+        public static AnimationAccessor<StaticAnimation> HOLD_SCOPE;
+        public static AnimationAccessor<MovementAnimation> SNEAK_SCOPE;
+        public static AnimationAccessor<StaticAnimation> KNEEL_SCOPE;
 
     @SubscribeEvent
     public static void registerAnimations(AnimationRegistryEvent event) {
-        event.getRegistryMap().put(Epic_fight_musket_compat.MODID, Animations::build);
+        event.newBuilder(Epic_fight_musket_compat.MODID, Animations::build);
     }
-
-    private static void build() {
-
-        HumanoidArmature biped = Armatures.BIPED;
-        HOLD_MUSKET = new StaticAnimation(true, "biped/living/hold_musket", biped);
-        WALK_MUSKET = new MovementAnimation(true, "biped/living/walk_musket", biped);
-        RUN_MUSKET = new MovementAnimation(true, "biped/living/run_musket", biped);
-        KNEEL_MUSKET = new MovementAnimation(true, "biped/living/kneel_musket", biped);
-        SNEAK_MUSKET = new MovementAnimation(true, "biped/living/sneak_musket", biped);
-        RUN_MUSKET = new MovementAnimation(true, "biped/living/run_musket", biped);
-        RELOAD_MUSKET = new StaticAnimation(true, "biped/living/reload_musket", biped);
-        BAYONET_CHARGE = new BasicAttackAnimation(0.1F, 0.2F, 0.4F, 0.6F, 0.9F, null, biped.toolR, "biped/combat/bayonet_charge", biped)
-                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.6F))
-                .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, ((dynamicAnimation, livingEntityPatch, v, v1, v2) -> 1.0F));
-        MUSKET_AUTO_1 = new BasicAttackAnimation(0.1F, 0.3F, 0.5F, 0.8F, null, biped.toolR, "biped/combat/musket_auto_1", biped)
-                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.0F))
-                .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, ((dynamicAnimation, livingEntityPatch, v, v1, v2) -> 1.0F));
-        BAYONET = new BasicAttackAnimation(0.1F, 0.4F, 0.6F, 0.7F, null, biped.toolR, "biped/combat/bayonet", biped)
-                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.0F))
-                .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, ((dynamicAnimation, livingEntityPatch, v, v1, v2) -> 1.0F));
-        HOLD_BAYONET = new StaticAnimation(true, "biped/living/hold_bayonet", biped);
-        HOLD_PISTOL = new StaticAnimation(true, "biped/living/hold_pistol", biped);
-        KNEEL_PISTOL = new StaticAnimation(true, "biped/living/kneel_pistol", biped);
-        SNEAK_PISTOL = new StaticAnimation(true, "biped/living/sneak_pistol", biped);
-        RUN_PISTOL = new MovementAnimation(true, "biped/living/run_pistol", biped);
-        WALK_PISTOL = new MovementAnimation(true, "biped/living/walk_pistol", biped);
-        RELOAD_PISTOL = new StaticAnimation(true, "biped/living/reload_pistol", biped);
-        PISTOL_AUTO_1 = new BasicAttackAnimation(0.1F, 0.5F, 0.6F, 0.8F, null, biped.toolR, "biped/combat/pistol_auto_1", biped)
-                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.0F))
-                .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, ((dynamicAnimation, livingEntityPatch, v, v1, v2) -> 1.0F));
-        PISTOL_AUTO_2 = new BasicAttackAnimation(0.1F, 0.3F, 0.4F, 0.8F, null, biped.toolR, "biped/combat/pistol_auto_2", biped)
-                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.3F))
-                .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, ((dynamicAnimation, livingEntityPatch, v, v1, v2) -> 1.0F));
-        PISTOL_AUTO_3 = new BasicAttackAnimation(0.1F, 0.5F, 0.6F, 0.8F, null, biped.toolR, "biped/combat/pistol_auto_3", biped)
-                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.2F))
-                .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, ((dynamicAnimation, livingEntityPatch, v, v1, v2) -> 1.0F));
-        PISTOL_DASH = new DashAttackAnimation(0.1F, 0.0F, 0.2F, 0.4F, 0.65F, null, biped.toolR, "biped/combat/pistol_dash", biped)
-                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.0F))
-                .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, ((dynamicAnimation, livingEntityPatch, v, v1, v2) -> 1.0F));
-        HOLD_BANNER = new StaticAnimation(true, "biped/living/hold_banner", biped);
-        KNEEL_BANNER = new StaticAnimation(true, "biped/living/kneel_banner", biped);
-        SNEAK_BANNER = new StaticAnimation(true, "biped/living/sneak_banner", biped);
-        HOLD_SCOPE = new StaticAnimation(true, "biped/living/hold_scope", biped);
+    public static void build(AnimationManager.AnimationBuilder builder) {
+        HOLD_MUSKET = builder.nextAccessor("biped/living/hold_musket", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        WALK_MUSKET = builder.nextAccessor("biped/living/walk_musket", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        RUN_MUSKET = builder.nextAccessor("biped/living/run_musket", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        KNEEL_MUSKET = builder.nextAccessor("biped/living/kneel_musket", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        SNEAK_MUSKET = builder.nextAccessor("biped/living/sneak_musket", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        RELOAD_MUSKET = builder.nextAccessor("biped/living/reload_musket", (accessor) -> new StaticAnimation(false, accessor, Armatures.BIPED));
+        RUN_BAYONET = builder.nextAccessor("biped/living/run_bayonet", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        BAYONET_DASH = builder.nextAccessor("biped/combat/bayonet_dash", (accessor) ->
+                new DashAttackAnimation(0.1F, 0.2F, 0.4F, 0.6F, 0.9F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED, true)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.6F)));
+        MUSKET_AUTO_1 = builder.nextAccessor("biped/combat/musket_auto_1", (accessor) ->
+                new BasicAttackAnimation(0.1F, 0.3F, 0.5F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED));
+        BAYONET = builder.nextAccessor("biped/combat/bayonet", (accessor) ->
+                new BasicAttackAnimation(0.1F, 0.4F, 0.6F, 0.7F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED));
+        HOLD_PISTOL = builder.nextAccessor("biped/living/hold_pistol", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        KNEEL_PISTOL = builder.nextAccessor("biped/living/kneel_pistol", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        SNEAK_PISTOL = builder.nextAccessor("biped/living/sneak_pistol", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        RUN_PISTOL = builder.nextAccessor("biped/living/run_pistol", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        WALK_PISTOL = builder.nextAccessor("biped/living/walk_pistol", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        RELOAD_PISTOL = builder.nextAccessor("biped/living/reload_pistol", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        PISTOL_AUTO_1 = builder.nextAccessor("biped/combat/pistol_auto_1", (accessor) ->
+                new BasicAttackAnimation(0.1F, 0.5F, 0.6F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED));
+        PISTOL_AUTO_2 = builder.nextAccessor("biped/combat/pistol_auto_2", (accessor) ->
+                new BasicAttackAnimation(0.1F, 0.3F, 0.4F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED));
+        PISTOL_AUTO_3 = builder.nextAccessor("biped/combat/pistol_auto_3", (accessor) ->
+                new BasicAttackAnimation(0.1F, 0.5F, 0.6F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED));
+        PISTOL_DASH = builder.nextAccessor("biped/combat/bayonet_dash", (accessor) ->
+                new DashAttackAnimation(0.1F, 0.0F, 0.2F, 0.4F, 0.65F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED, true)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.6F)));
+        HOLD_SCOPE = builder.nextAccessor("biped/living/hold_scope", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        KNEEL_SCOPE = builder.nextAccessor("biped/living/kneel_scope", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        SNEAK_SCOPE = builder.nextAccessor("biped/living/sneak_musket", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
     }
 }

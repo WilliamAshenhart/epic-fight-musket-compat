@@ -17,7 +17,6 @@ public class WeaponCategoryMapper {
         categoryMap.put(MusketWeaponCategories.BAYONET, CapabilityItem.WeaponCategories.RANGED);
         categoryMap.put(MusketWeaponCategories.PISTOL, CapabilityItem.WeaponCategories.RANGED);
         categoryMap.put(MusketWeaponCategories.SCOPED, CapabilityItem.WeaponCategories.RANGED);
-        categoryMap.put(MusketWeaponCategories.BANNER, CapabilityItem.WeaponCategories.NOT_WEAPON);
     }
 
     public static CapabilityItem.Builder apply(Item item, MusketWeaponCategories category) {
