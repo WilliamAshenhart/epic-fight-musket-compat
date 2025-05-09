@@ -63,7 +63,7 @@ public class WeaponCapabilityPresets {
                 .livingMotionModifier(Styles.RANGED, LivingMotions.KNEEL, Animations.KNEEL_MUSKET)
                 .livingMotionModifier(Styles.RANGED, LivingMotions.SNEAK, Animations.SNEAK_MUSKET)
                 .livingMotionModifier(Styles.RANGED, LivingMotions.SWIM, Animations.HOLD_MUSKET)
-                .livingMotionModifier(Styles.RANGED, LivingMotions.AIM, yesman.epicfight.gameasset.Animations.BIPED_CROSSBOW_AIM)
+                .livingMotionModifier(Styles.RANGED, LivingMotions.AIM, Animations.HOLD_MUSKET)
                 .livingMotionModifier(Styles.RANGED, LivingMotions.SHOT, yesman.epicfight.gameasset.Animations.BIPED_CROSSBOW_SHOT)
                 .livingMotionModifier(Styles.RANGED, LivingMotions.RELOAD, Animations.RELOAD_MUSKET);
 
@@ -109,7 +109,7 @@ public class WeaponCapabilityPresets {
                 .livingMotionModifier(Styles.RANGED, LivingMotions.KNEEL, Animations.KNEEL_SCOPE)
                 .livingMotionModifier(Styles.RANGED, LivingMotions.SNEAK, Animations.SNEAK_SCOPE)
                 .livingMotionModifier(Styles.RANGED, LivingMotions.SWIM, Animations.HOLD_SCOPE)
-                .livingMotionModifier(Styles.RANGED, LivingMotions.AIM, yesman.epicfight.gameasset.Animations.BIPED_CROSSBOW_AIM)
+                .livingMotionModifier(Styles.RANGED, LivingMotions.AIM, Animations.HOLD_SCOPE)
                 .livingMotionModifier(Styles.RANGED, LivingMotions.SHOT, yesman.epicfight.gameasset.Animations.BIPED_CROSSBOW_SHOT)
                 .livingMotionModifier(Styles.RANGED, LivingMotions.RELOAD, Animations.RELOAD_MUSKET);
 

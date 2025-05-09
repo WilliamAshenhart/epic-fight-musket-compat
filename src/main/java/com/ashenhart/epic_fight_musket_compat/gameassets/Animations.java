@@ -66,11 +66,14 @@ public class Animations {
         RUN_BAYONET = builder.nextAccessor("biped/living/run_bayonet", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
         BAYONET_DASH = builder.nextAccessor("biped/combat/bayonet_dash", (accessor) ->
                 new DashAttackAnimation(0.1F, 0.2F, 0.4F, 0.6F, 0.9F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED, true)
-                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.6F)));
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.6F))
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,0.4F));
         MUSKET_AUTO_1 = builder.nextAccessor("biped/combat/musket_auto_1", (accessor) ->
-                new BasicAttackAnimation(0.1F, 0.3F, 0.5F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED));
+                new BasicAttackAnimation(0.1F, 0.3F, 0.5F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,0.4F));
         BAYONET = builder.nextAccessor("biped/combat/bayonet", (accessor) ->
-                new BasicAttackAnimation(0.1F, 0.4F, 0.6F, 0.7F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED));
+                new BasicAttackAnimation(0.1F, 0.4F, 0.6F, 0.7F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,0.4F));
         HOLD_PISTOL = builder.nextAccessor("biped/living/hold_pistol", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
         KNEEL_PISTOL = builder.nextAccessor("biped/living/kneel_pistol", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
         SNEAK_PISTOL = builder.nextAccessor("biped/living/sneak_pistol", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
@@ -78,14 +81,18 @@ public class Animations {
         WALK_PISTOL = builder.nextAccessor("biped/living/walk_pistol", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
         RELOAD_PISTOL = builder.nextAccessor("biped/living/reload_pistol", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
         PISTOL_AUTO_1 = builder.nextAccessor("biped/combat/pistol_auto_1", (accessor) ->
-                new BasicAttackAnimation(0.1F, 0.5F, 0.6F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED));
+                new BasicAttackAnimation(0.1F, 0.5F, 0.6F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,0.4F));
         PISTOL_AUTO_2 = builder.nextAccessor("biped/combat/pistol_auto_2", (accessor) ->
-                new BasicAttackAnimation(0.1F, 0.3F, 0.4F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED));
+                new BasicAttackAnimation(0.1F, 0.3F, 0.4F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,0.4F));
         PISTOL_AUTO_3 = builder.nextAccessor("biped/combat/pistol_auto_3", (accessor) ->
-                new BasicAttackAnimation(0.1F, 0.5F, 0.6F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED));
+                new BasicAttackAnimation(0.1F, 0.5F, 0.6F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,0.4F));
         PISTOL_DASH = builder.nextAccessor("biped/combat/bayonet_dash", (accessor) ->
                 new DashAttackAnimation(0.1F, 0.0F, 0.2F, 0.4F, 0.65F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED, true)
-                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.6F)));
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.6F))
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,0.4F));
         HOLD_SCOPE = builder.nextAccessor("biped/living/hold_scope", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
         KNEEL_SCOPE = builder.nextAccessor("biped/living/kneel_scope", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
         SNEAK_SCOPE = builder.nextAccessor("biped/living/sneak_musket", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
