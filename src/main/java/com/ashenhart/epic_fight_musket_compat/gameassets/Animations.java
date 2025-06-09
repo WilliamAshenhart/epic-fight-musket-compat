@@ -84,7 +84,7 @@ public class Animations {
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,2.4F));
         BAYONET_AUTO = builder.nextAccessor("biped/combat/bayonet_auto", (accessor) ->
                 new BasicAttackAnimation(0.1F, 0.4F, 0.6F, 0.7F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.5F));
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.8F));
         HOLD_PISTOL = builder.nextAccessor("biped/living/hold_pistol", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
         KNEEL_PISTOL = builder.nextAccessor("biped/living/kneel_pistol", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
         SNEAK_PISTOL = builder.nextAccessor("biped/living/sneak_pistol", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
