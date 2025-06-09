@@ -10,13 +10,14 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import com.ashenhart.epic_fight_musket_compat.Epic_fight_musket_compat;
-
 import yesman.epicfight.api.animation.LivingMotions;
 import yesman.epicfight.api.forgeevent.WeaponCapabilityPresetRegistryEvent;
 import yesman.epicfight.gameasset.ColliderPreset;
 import yesman.epicfight.gameasset.EpicFightSounds;
+import yesman.epicfight.world.capabilities.item.BowCapability;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import yesman.epicfight.world.capabilities.item.CapabilityItem.Styles;
+import yesman.epicfight.world.capabilities.item.RangedWeaponCapability;
 import yesman.epicfight.world.capabilities.item.WeaponCapability;
 
 @Mod.EventBusSubscriber(modid = Epic_fight_musket_compat.MODID , bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -30,7 +31,7 @@ public class WeaponCapabilityPresets {
                 .swingSound(EpicFightSounds.WHOOSH.get())
                 .hitSound(EpicFightSounds.BLUNT_HIT.get())
                 .canBePlacedOffhand(false)
-                .newStyleCombo(Styles.RANGED, Animations.MUSKET_AUTO_1, Animations.MUSKET_AUTO_1, yesman.epicfight.gameasset.Animations.SPEAR_TWOHAND_AIR_SLASH)
+                .newStyleCombo(Styles.RANGED, Animations.MUSKET_AUTO_1, Animations.MUSKET_AUTO_2, Animations.MUSKET_AUTO_1, yesman.epicfight.gameasset.Animations.SPEAR_TWOHAND_AIR_SLASH)
                 .livingMotionModifier(Styles.RANGED, LivingMotions.IDLE, Animations.HOLD_MUSKET)
                 .livingMotionModifier(Styles.RANGED, LivingMotions.WALK, Animations.WALK_MUSKET)
                 .livingMotionModifier(Styles.RANGED, LivingMotions.CHASE, Animations.RUN_MUSKET)
@@ -54,7 +55,7 @@ public class WeaponCapabilityPresets {
                 .swingSound(EpicFightSounds.WHOOSH.get())
                 .hitSound(EpicFightSounds.BLADE_HIT.get())
                 .canBePlacedOffhand(false)
-                .newStyleCombo(Styles.RANGED, Animations.BAYONET, Animations.BAYONET_DASH, yesman.epicfight.gameasset.Animations.SPEAR_TWOHAND_AIR_SLASH)
+                .newStyleCombo(Styles.RANGED, Animations.MUSKET_AUTO_1, Animations.MUSKET_AUTO_2, Animations.BAYONET_AUTO, Animations.BAYONET_DASH, yesman.epicfight.gameasset.Animations.SPEAR_TWOHAND_AIR_SLASH)
                 .livingMotionModifier(Styles.RANGED, LivingMotions.IDLE, Animations.HOLD_MUSKET)
                 .livingMotionModifier(Styles.RANGED, LivingMotions.WALK, Animations.WALK_MUSKET)
                 .livingMotionModifier(Styles.RANGED, LivingMotions.CHASE, Animations.RUN_BAYONET)
@@ -100,7 +101,7 @@ public class WeaponCapabilityPresets {
                 .swingSound(EpicFightSounds.WHOOSH.get())
                 .hitSound(EpicFightSounds.BLUNT_HIT.get())
                 .canBePlacedOffhand(false)
-                .newStyleCombo(Styles.RANGED, Animations.MUSKET_AUTO_1, Animations.MUSKET_AUTO_1, yesman.epicfight.gameasset.Animations.SPEAR_TWOHAND_AIR_SLASH)
+                .newStyleCombo(Styles.RANGED, Animations.MUSKET_AUTO_1, Animations.MUSKET_AUTO_2, Animations.MUSKET_AUTO_1, yesman.epicfight.gameasset.Animations.SPEAR_TWOHAND_AIR_SLASH)
                 .livingMotionModifier(Styles.RANGED, LivingMotions.IDLE, Animations.HOLD_SCOPE)
                 .livingMotionModifier(Styles.RANGED, LivingMotions.WALK, Animations.WALK_MUSKET)
                 .livingMotionModifier(Styles.RANGED, LivingMotions.CHASE, Animations.RUN_MUSKET)
@@ -122,5 +123,25 @@ public class WeaponCapabilityPresets {
         event.getTypeEntry().put(new ResourceLocation(Epic_fight_musket_compat.MODID, "bayonet"), BAYONET);
         event.getTypeEntry().put(new ResourceLocation(Epic_fight_musket_compat.MODID, "pistol"), PISTOL);
         event.getTypeEntry().put(new ResourceLocation(Epic_fight_musket_compat.MODID, "scoped"), SCOPED);
+        event.getTypeEntry().put(new ResourceLocation(Epic_fight_musket_compat.MODID, "ceremonial_musket"), CEREMONIAL_MUSKET);
+        event.getTypeEntry().put(new ResourceLocation(Epic_fight_musket_compat.MODID, "ceremonial_pistol"), CEREMONIAL_PISTOL);
     }
+    public static final Function<Item, CapabilityItem.Builder> CEREMONIAL_MUSKET =  (item) -> RangedWeaponCapability.builder()
+            .zoomInType(CapabilityItem.ZoomInType.USE_TICK)
+            .addAnimationsModifier(LivingMotions.IDLE, Animations.HOLD_CEREMONIAL_MUSKET)
+            .addAnimationsModifier(LivingMotions.WALK, Animations.WALK_CEREMONIAL_MUSKET)
+            .addAnimationsModifier(LivingMotions.RUN, Animations.RUN_MUSKET)
+            .addAnimationsModifier(LivingMotions.AIM, Animations.MUSKET_AIM)
+            .addAnimationsModifier(LivingMotions.JUMP, Animations.HOLD_CEREMONIAL_MUSKET)
+            .addAnimationsModifier(LivingMotions.KNEEL, Animations.HOLD_CEREMONIAL_MUSKET)
+            .addAnimationsModifier(LivingMotions.SNEAK, Animations.HOLD_CEREMONIAL_MUSKET)
+            .addAnimationsModifier(LivingMotions.SHOT, Animations.MUSKET_SHOT);
+
+    public static final Function<Item, CapabilityItem.Builder> CEREMONIAL_PISTOL =  (item) -> RangedWeaponCapability.builder()
+            .zoomInType(CapabilityItem.ZoomInType.USE_TICK)
+            .addAnimationsModifier(LivingMotions.IDLE, yesman.epicfight.gameasset.Animations.BIPED_HOLD_LONGSWORD)
+            .addAnimationsModifier(LivingMotions.WALK, yesman.epicfight.gameasset.Animations.BIPED_WALK_LONGSWORD)
+            .addAnimationsModifier(LivingMotions.RUN, yesman.epicfight.gameasset.Animations.BIPED_RUN_LONGSWORD)
+            .addAnimationsModifier(LivingMotions.AIM, Animations.CEREMONIAL_PISTOL_AIM)
+            .addAnimationsModifier(LivingMotions.SHOT, Animations.CEREMONIAL_PISTOL_SHOT);
 }
