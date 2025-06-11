@@ -149,7 +149,7 @@ dependencies {
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
     // The group id is ignored when searching -- in this case, it is "blank"
     // implementation fg.deobf("blank:coolmod-${mc_version}:${coolmod_version}")
-    implementation fg.deobf("curse.maven:epic-fight-mod-405076:6498355")
+    implementation fg.deobf("curse.maven:epic-fight-mod-405076:6632324")
     implementation fg.deobf("curse.maven:ewewukeks-musket-mod-354562:5805565")
 
     // For more info:
