@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.ashenhart.epic_fight_musket_compat.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "epic_fight_musket_compat.refmap.json",
+  "mixins": [
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
