@@ -8,8 +8,8 @@ import yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import yesman.epicfight.world.capabilities.item.RangedWeaponCapability;
 
-public class CeremonialCapability extends RangedWeaponCapability {
-	protected CeremonialCapability(CapabilityItem.Builder builder) {
+public class CeremonialMusketCapability extends RangedWeaponCapability {
+	protected CeremonialMusketCapability(CapabilityItem.Builder builder) {
 		super(builder);
 	}
 

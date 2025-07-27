@@ -1,0 +1,10 @@
+{
+    "epicfight.weapon_category.musket": "Musket",
+    "epicfight.weapon_category.bayonet": "Bayonet",
+    "epicfight.weapon_category.pistol": "Pistol",
+    "epicfight.weapon_category.scoped": "Scoped Musket",
+    "epicfight.weapon_category.ceremonial_musket": "Ceremonial Musket",
+    "epicfight.weapon_category.ceremonial_musket": "Ceremonial Pistol",
+    "skill.epic_fight_musket_compat.last_push": "Last Push",
+	"skill.epic_fight_musket_compat.last_push.tooltip": "Throw your soldiers into positions whence there is no escape, and they will prefer death to flight"
+}
