@@ -92,8 +92,8 @@ public class LastPushSkill extends WeaponInnateSkill {
     public List<Component> getTooltipOnItem(ItemStack itemStack, CapabilityItem cap, PlayerPatch<?> playerCap) {
         List<Component> list = super.getTooltipOnItem(itemStack, cap, playerCap);
         this.generateTooltipforPhase(list, itemStack, cap, playerCap, (Map) this.properties.get(0), "Charge");
-        this.generateTooltipforPhase(list, itemStack, cap, playerCap, (Map) this.properties.get(1), "Kick");
-        this.generateTooltipforPhase(list, itemStack, cap, playerCap, (Map) this.properties.get(2), "Stab");
+        this.generateTooltipforPhase(list, itemStack, cap, playerCap, (Map) this.properties.get(1), "Stab");
+        this.generateTooltipforPhase(list, itemStack, cap, playerCap, (Map) this.properties.get(2), "Kick");
         return list;
     }
 

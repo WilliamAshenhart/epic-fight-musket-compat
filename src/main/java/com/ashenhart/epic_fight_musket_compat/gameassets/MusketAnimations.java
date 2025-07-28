@@ -12,8 +12,10 @@ import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.AnimationManager.AnimationRegistryEvent;
 import yesman.epicfight.api.animation.AnimationManager.AnimationAccessor;
 import yesman.epicfight.api.animation.property.AnimationProperty.*;
+import yesman.epicfight.api.utils.HitEntityList;
 import yesman.epicfight.api.utils.math.ValueModifier;
 import yesman.epicfight.gameasset.Armatures;
+import yesman.epicfight.gameasset.ColliderPreset;
 import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.particle.EpicFightParticles;
 
@@ -163,20 +165,23 @@ public class MusketAnimations {
         KNEEL_SCOPE = builder.nextAccessor("biped/living/kneel_scope", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
         SNEAK_SCOPE = builder.nextAccessor("biped/living/sneak_musket", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
         LAST_PUSH_TRY = builder.nextAccessor("biped/skill/last_push_try", (accessor) ->
-                new AttackAnimation(0.1F, 0.0F, 0.4F, 1.9F, 2.0F, null, Armatures.BIPED.get().rootJoint, accessor, Armatures.BIPED)
-                        .addProperty(ActionAnimationProperty.COORD_START_KEYFRAME_INDEX, 1)
-                        .addProperty(ActionAnimationProperty.DEST_LOCATION_PROVIDER, MoveCoordFunctions.SYNCHED_TARGET_ENTITY_LOCATION_VARIABLE));
+                new AttackAnimation(1.0F, 0.4F, 0.6F, 1.6F, 2.0F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, false)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F));
         LAST_PUSH_EXECUTE = builder.nextAccessor("biped/skill/last_push_execute", (accessor) ->
-                new AttackAnimation(0.15F, 0.0F, 0.04F, 0.05F, 0.4F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                new AttackAnimation(0.15F, 0.1F, 0.3F, 0.4F, 0.8F, ColliderPreset.FIST, Armatures.BIPED.get().legL, accessor, Armatures.BIPED)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, false)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.4F));
         LAST_PUSH_FAIL = builder.nextAccessor("biped/skill/last_push_fail", (accessor) ->
-                new AttackAnimation(0F, 0F, 0F, 0F, 0.32F, null, Armatures.BIPED.get().thighL, accessor, Armatures.BIPED)
+                new AttackAnimation(0F, 0F, 0F, 0F, 0.32F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AttackPhaseProperty.SWING_SOUND, SoundEvents.EMPTY)
                         .addProperty(AttackPhaseProperty.HIT_SOUND, SoundEvents.EMPTY)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, false)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.6F));
-        LAST_PUSH_HIT = builder.nextAccessor("biped/interact/last_push_hit", (accessor) ->
-                new AttackAnimation(0.1F, accessor, Armatures.BIPED)
-                        .addProperty(ActionAnimationProperty.IS_DEATH_ANIMATION, true));
+        LAST_PUSH_HIT = builder.nextAccessor("biped/skill/last_push_hit", (accessor) ->
+                new AttackAnimation(0.08F, 0.1F, 0.4F, 0.6F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, false)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.4F));
     }
 
     public interface IProxy {
