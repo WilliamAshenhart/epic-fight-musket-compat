@@ -49,6 +49,7 @@ public class LastPushSkill extends WeaponInnateSkill {
 
                 if (!hurtEntities.isEmpty() && hurtEntities.get(0).isAlive()) {
                     event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
+                    event.getPlayerPatch().stopPlaying(this.first);
                     event.getPlayerPatch().playAnimationInstantly(this.second);
                     event.getPlayerPatch().getCurrenltyHurtEntities().clear();
                 } else {
