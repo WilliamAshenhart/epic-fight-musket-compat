@@ -165,7 +165,7 @@ public class MusketAnimations {
         KNEEL_SCOPE = builder.nextAccessor("biped/living/kneel_scope", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
         SNEAK_SCOPE = builder.nextAccessor("biped/living/sneak_musket", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
         LAST_PUSH_TRY = builder.nextAccessor("biped/skill/last_push_try", (accessor) ->
-                new AttackAnimation(1.0F, 0.4F, 0.6F, 1.6F, 2.0F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                new AttackAnimation(1.0F, 0.4F, 0.6F, 1.6F, 2.7F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, false)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F));
         LAST_PUSH_EXECUTE = builder.nextAccessor("biped/skill/last_push_execute", (accessor) ->
