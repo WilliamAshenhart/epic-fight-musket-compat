@@ -183,21 +183,4 @@ public class MusketAnimations {
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, false)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.4F));
     }
-
-    public interface IProxy {
-        @Nullable
-        Entity getClientPlayer();
-    }
-    public static class ClientProxy implements IProxy {
-        @Override
-        public Entity getClientPlayer() {
-            return Minecraft.getInstance().player;
-        }
-    }
-    public static class ServerProxy implements IProxy {
-        @Override
-        public Entity getClientPlayer() {
-            return null;
-        }
-    }
 }
