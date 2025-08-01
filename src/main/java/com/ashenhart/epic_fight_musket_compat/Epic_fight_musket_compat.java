@@ -18,23 +18,12 @@ import yesman.epicfight.world.capabilities.item.WeaponCategory;
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Epic_fight_musket_compat.MODID)
 public class Epic_fight_musket_compat {
-    public static MusketAnimations.IProxy proxy;
     public static final String MODID = "epic_fight_musket_compat";
     public Epic_fight_musket_compat(FMLJavaModLoadingContext eventBus) {
         IEventBus bus = eventBus.getModEventBus();
         MinecraftForge.EVENT_BUS.register(this);
         WeaponCategory.ENUM_MANAGER.registerEnumCls(MODID, MusketWeaponCategories.class);
         bus.addListener(MusketAnimations::registerAnimations);
-        if (FMLEnvironment.dist == Dist.CLIENT) {
-            proxy = new MusketAnimations.IProxy() {
-                @Override
-                public @Nullable Entity getClientPlayer() {
-                    return null;
-                }
-            };
-        } else {
-            proxy = new MusketAnimations.ServerProxy();
-        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
