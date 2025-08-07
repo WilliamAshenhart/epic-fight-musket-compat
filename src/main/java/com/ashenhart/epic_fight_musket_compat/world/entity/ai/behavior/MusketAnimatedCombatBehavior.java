@@ -14,13 +14,12 @@ public class MusketAnimatedCombatBehavior extends AnimatedCombatBehavior {
     }
     @Override
     protected boolean checkExtraStartConditions(ServerLevel levelIn, Mob entityIn) {
-        return !this.isHoldingGun(entityIn) && this.isValidTarget(this.mobpatch.getTarget());
+        return this.isHoldingGun(entityIn) && this.isValidTarget(this.mobpatch.getTarget());
     }
     private boolean isHoldingGun(Mob mob) {
         return mob.isHolding((stack) -> {
             Item item = stack.getItem();
-            return item instanceof GunItem && mob.isUsingItem();
+            return item instanceof GunItem && GunItem.canUse(mob);
         });
     }
 }
-

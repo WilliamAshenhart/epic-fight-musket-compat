@@ -26,8 +26,7 @@ public class MusketSkills {
 
 
         WeaponInnateSkill last_push = modRegistry.build("last_push", LastPushSkill::new, WeaponInnateSkill.createWeaponInnateBuilder());
-        last_push
-                .newProperty()
+        last_push.newProperty()
                 .addProperty(AnimationProperty.AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.setter(2))
                 .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(6))
                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.HOLD)

@@ -19,10 +19,11 @@ public class MixinRangedGunAttackGoal {
             method = "tick()V"
     )
     private void epicfight$tick(Monster self) {
-        self.releaseUsingItem();
+        self.getUseItem();
 
         EpicFightCapabilities.getUnparameterizedEntityPatch((Entity)self, LivingEntityPatch.class).ifPresent(entitypatch -> {
             entitypatch.playShootingAnimation();
         });
     }
+
 }
