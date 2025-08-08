@@ -25,12 +25,11 @@ public class MixinGunAttack {
             remap = false
     )
     private void musketcompat$fire(GunItem gun, LivingEntity self, InteractionHand hand, Vec3 direction) {
-        self.getUseItem();
+        gun.mobUse(self, hand, direction);
 
         EpicFightCapabilities.getUnparameterizedEntityPatch((Entity)self, LivingEntityPatch.class).ifPresent(entitypatch -> {
             entitypatch.playShootingAnimation();
         });
-        gun.mobUse(self, hand, direction);
     }
 
 }
