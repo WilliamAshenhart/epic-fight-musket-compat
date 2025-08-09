@@ -1,29 +1,17 @@
 package com.ashenhart.epic_fight_musket_compat.world.capabilities.entitypatch;
 
-import com.ashenhart.epic_fight_musket_compat.world.entity.ai.behavior.MusketAnimatedCombatBehavior;
-import com.mojang.datafixers.util.Pair;
 
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.InteractionHand;
+import ewewukek.musketmod.GunItem;
 import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.UseAnim;
-import yesman.epicfight.api.animation.Animator;
-import yesman.epicfight.api.animation.LivingMotion;
 import yesman.epicfight.api.animation.LivingMotions;
-import yesman.epicfight.api.animation.AnimationManager.AnimationAccessor;
-import yesman.epicfight.api.animation.types.StaticAnimation;
 import yesman.epicfight.api.client.animation.Layer;
 import yesman.epicfight.api.data.reloader.MobPatchReloadListener;
-import yesman.epicfight.api.utils.math.OpenMatrix4f;
-import yesman.epicfight.particle.HitParticleType;
 import yesman.epicfight.world.capabilities.entitypatch.Faction;
 import yesman.epicfight.world.capabilities.entitypatch.HumanoidMobPatch;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import yesman.epicfight.world.capabilities.item.CapabilityItem.WeaponCategories;
-import yesman.epicfight.world.damagesource.StunType;
-import yesman.epicfight.world.entity.ai.attribute.EpicFightAttributes;
 import yesman.epicfight.world.entity.ai.behavior.AnimatedCombatBehavior;
 import yesman.epicfight.world.entity.ai.behavior.MoveToTargetSinkStopInaction;
 import yesman.epicfight.world.entity.ai.brain.BrainRecomposer;
@@ -35,7 +23,7 @@ public class CustomMusketHumanoidMobPatch<T extends PathfinderMob> extends Muske
     private final MobPatchReloadListener.CustomHumanoidMobPatchProvider provider;
 
     public CustomMusketHumanoidMobPatch(Faction faction, MobPatchReloadListener.CustomHumanoidMobPatchProvider provider) {
-        super(faction, provider);
+        super(faction);
 
         this.provider = provider;
         this.weaponLivingMotions = this.provider.getHumanoidWeaponMotions();
@@ -49,7 +37,7 @@ public class CustomMusketHumanoidMobPatch<T extends PathfinderMob> extends Muske
         if (useBrain) {
             if (!holdingGun) {
                 CombatBehaviors.Builder<HumanoidMobPatch<?>> builder = this.getHoldingItemWeaponMotionBuilder();
-                BrainRecomposer.recomposeBrainByType(this.original.getType(), this.original.getBrain(), (builder != null) ? new MusketAnimatedCombatBehavior(this, builder.build(this)) : null, new MoveToTargetSinkStopInaction());
+                BrainRecomposer.recomposeBrainByType(this.original.getType(), this.original.getBrain(), (builder != null) ? new AnimatedCombatBehavior<>(this, builder.build(this)) : null, new MoveToTargetSinkStopInaction());
             }
         } else {
             if (!holdingGun) {
@@ -60,26 +48,6 @@ public class CustomMusketHumanoidMobPatch<T extends PathfinderMob> extends Muske
                     this.original.goalSelector.addGoal(1, new TargetChasingGoal(this, this.getOriginal(), this.provider.getChasingSpeed(), true));
                 }
             }
-        }
-    }
-
-    public void initAttributes() {
-        this.original.getAttribute(EpicFightAttributes.MAX_STRIKES.get()).setBaseValue(this.provider.getAttributeValues().getDouble(EpicFightAttributes.MAX_STRIKES.get()));
-        this.original.getAttribute(EpicFightAttributes.ARMOR_NEGATION.get()).setBaseValue(this.provider.getAttributeValues().getDouble(EpicFightAttributes.ARMOR_NEGATION.get()));
-        this.original.getAttribute(EpicFightAttributes.IMPACT.get()).setBaseValue(this.provider.getAttributeValues().getDouble(EpicFightAttributes.IMPACT.get()));
-        this.original.getAttribute(EpicFightAttributes.STUN_ARMOR.get()).setBaseValue(this.provider.getAttributeValues().getDouble(EpicFightAttributes.STUN_ARMOR.get()));
-
-        if (this.provider.getAttributeValues().containsKey(Attributes.ATTACK_DAMAGE)) {
-            this.original.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(this.provider.getAttributeValues().getDouble(Attributes.ATTACK_DAMAGE));
-        }
-    }
-
-    @Override
-    public void initAnimator(Animator animator) {
-        super.initAnimator(animator);
-
-        for (Pair<LivingMotion, AnimationAccessor<? extends StaticAnimation>> pair : this.provider.getDefaultAnimations()) {
-            animator.addLivingAnimation(pair.getFirst(), pair.getSecond());
         }
     }
 
@@ -113,50 +81,13 @@ public class CustomMusketHumanoidMobPatch<T extends PathfinderMob> extends Muske
             else
                 currentCompositeMotion = currentLivingMotion;
         }
-    }
-
-    @Override
-    public AnimationAccessor<? extends StaticAnimation> getHitAnimation(StunType stunType) {
-        return this.provider.getStunAnimations().get(stunType);
-    }
-
-    @Override
-    public SoundEvent getWeaponHitSound(InteractionHand hand) {
-        CapabilityItem itemCap = this.getAdvancedHoldingItemCapability(hand);
-
-        if (itemCap.isEmpty()) {
-            return this.provider.getHitSound();
-        }
-
-        return itemCap.getHitSound();
-    }
-
-    @Override
-    public SoundEvent getSwingSound(InteractionHand hand) {
-        CapabilityItem itemCap = this.getAdvancedHoldingItemCapability(hand);
-
-        if (itemCap.isEmpty()) {
-            return this.provider.getSwingSound();
-        }
-
-        return itemCap.getSmashingSound();
-    }
-
-    @Override
-    public HitParticleType getWeaponHitParticle(InteractionHand hand) {
-        CapabilityItem itemCap = this.getAdvancedHoldingItemCapability(hand);
-
-        if (itemCap.isEmpty()) {
-            return this.provider.getHitParticle();
-        }
-
-        return itemCap.getHitParticle();
-    }
-
-    @Override
-    public OpenMatrix4f getModelMatrix(float partialTicks) {
-        float scale = this.provider.getScale();
-
-        return super.getModelMatrix(partialTicks).scale(scale, scale, scale);
+        if (GunItem.isLoaded(this.original.getMainHandItem()))
+            currentCompositeMotion = LivingMotions.AIM;
+        else if (this.getClientAnimator().getCompositeLayer(Layer.Priority.MIDDLE).animationPlayer.getAnimation().get().isReboundAnimation())
+            currentCompositeMotion = LivingMotions.NONE;
+        else if (this.original.swinging && this.original.getSleepingPos().isEmpty())
+            currentCompositeMotion = LivingMotions.DIGGING;
+        else
+            currentCompositeMotion = currentLivingMotion;
     }
 }

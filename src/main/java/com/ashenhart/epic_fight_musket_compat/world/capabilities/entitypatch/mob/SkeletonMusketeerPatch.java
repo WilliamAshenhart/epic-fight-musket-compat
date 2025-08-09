@@ -1,0 +1,77 @@
+package com.ashenhart.epic_fight_musket_compat.world.capabilities.entitypatch.mob;
+
+import com.ashenhart.epic_fight_musket_compat.world.capabilities.entitypatch.MusketHumanoidMobPatch;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.util.Pair;
+import net.minecraft.world.entity.PathfinderMob;
+import yesman.epicfight.api.animation.Animator;
+import yesman.epicfight.api.animation.LivingMotions;
+import yesman.epicfight.gameasset.Animations;
+import yesman.epicfight.gameasset.MobCombatBehaviors;
+import yesman.epicfight.world.capabilities.entitypatch.Faction;
+import yesman.epicfight.world.capabilities.entitypatch.Factions;
+import yesman.epicfight.world.capabilities.entitypatch.HumanoidMobPatch;
+import yesman.epicfight.world.capabilities.item.CapabilityItem;
+import yesman.epicfight.world.capabilities.item.CapabilityItem.WeaponCategories;
+import yesman.epicfight.world.entity.ai.goal.AnimatedAttackGoal;
+import yesman.epicfight.world.entity.ai.goal.CombatBehaviors;
+import yesman.epicfight.world.entity.ai.goal.TargetChasingGoal;
+
+import java.util.Set;
+
+public class SkeletonMusketeerPatch<T extends PathfinderMob> extends MusketHumanoidMobPatch<T> {
+	public SkeletonMusketeerPatch() {
+		super(Factions.UNDEAD);
+	}
+
+	public SkeletonMusketeerPatch(Faction faction) {
+		super(faction);
+	}
+	
+	@Override
+	public void initAnimator(Animator animator) {
+		super.initAnimator(animator);
+		super.commonAggresiveMobAnimatorInit(animator);
+	}
+	
+	@Override
+	public void updateMotion(boolean considerInaction) {
+		super.commonAggressiveMusketMobUpdate(considerInaction);
+	}
+	
+	@Override
+	protected void setWeaponMotions() {
+		super.setWeaponMotions();
+		
+		this.weaponLivingMotions.put(WeaponCategories.SWORD, ImmutableMap.of(
+			CapabilityItem.Styles.ONE_HAND, Set.of(
+				Pair.of(LivingMotions.CHASE, Animations.WITHER_SKELETON_CHASE)
+			)
+		));
+		
+		this.weaponAttackMotions.put(WeaponCategories.SWORD, ImmutableMap.of(CapabilityItem.Styles.COMMON, MobCombatBehaviors.SKELETON_SWORD));
+	}
+	
+	@Override
+	public void setAIAsInfantry(boolean holdingRanedWeapon) {
+		if (!holdingRanedWeapon) {
+			CombatBehaviors.Builder<HumanoidMobPatch<?>> builder = this.getHoldingItemWeaponMotionBuilder();
+			
+			if (builder != null) {
+				this.original.goalSelector.addGoal(0, new AnimatedAttackGoal<>(this, builder.build(this)));
+				this.original.goalSelector.addGoal(1, new TargetChasingGoal(this, this.original, 1.2D, true));
+			}
+		}
+	}
+	@Override
+	public void setAIAsMusketeer(boolean holdingGun) {
+		if (!holdingGun) {
+			CombatBehaviors.Builder<HumanoidMobPatch<?>> builder = this.getHoldingItemWeaponMotionBuilder();
+
+			if (builder != null) {
+				this.original.goalSelector.addGoal(0, new AnimatedAttackGoal<>(this, builder.build(this)));
+				this.original.goalSelector.addGoal(1, new TargetChasingGoal(this, this.original, 1.2D, true));
+			}
+		}
+	}
+}

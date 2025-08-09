@@ -1,8 +1,6 @@
 package com.ashenhart.epic_fight_musket_compat.gameassets;
 
-import ewewukek.musketmod.GunItem;
 import yesman.epicfight.world.capabilities.entitypatch.HumanoidMobPatch;
-import yesman.epicfight.world.capabilities.entitypatch.mob.PillagerPatch;
 import yesman.epicfight.world.entity.ai.goal.CombatBehaviors;
 
 public class MusketMobCombatBehaviors {
