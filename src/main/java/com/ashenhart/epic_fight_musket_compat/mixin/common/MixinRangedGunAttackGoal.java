@@ -1,30 +1,25 @@
 package com.ashenhart.epic_fight_musket_compat.mixin.common;
 
 import ewewukek.musketmod.*;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.monster.Monster;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch;
 
-@Mixin(value = RangedGunAttackGoal.class)
+@Mixin(value = RangedGunAttackGoal.class, remap = false)
 public class MixinRangedGunAttackGoal {
-    @Redirect(
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/world/entity/monster/Monster;releaseUsingItem()V"
-            ),
-            method = "tick()V"
-    )
-    private void epicfight$tick(Monster self) {
-        self.startUsingItem(InteractionHand.MAIN_HAND);
+    @Shadow
+    public Monster mob;
 
-        EpicFightCapabilities.getUnparameterizedEntityPatch((Entity)self, LivingEntityPatch.class).ifPresent(entitypatch -> {
-            entitypatch.playShootingAnimation();
-        });
+    @Inject(method = "fire", at = @At("TAIL"))
+    private void epicfight_musket_compat$onFire(float spread, CallbackInfo ci) {
+        // Retrieve the Epic Fight entity patch for the mob and play the shooting animation
+        EpicFightCapabilities.getUnparameterizedEntityPatch(this.mob, LivingEntityPatch.class)
+                .ifPresent(LivingEntityPatch::playShootingAnimation);
     }
 
 }

@@ -5,8 +5,11 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "epic_fight_musket_compat.refmap.json",
   "mixins": [
+    "common.MixinGunItem",
+    "common.MixinMobPatch",
+    "common.MixinPillagerPatch",
     "common.MixinRangedGunAttackGoal",
-    "common.MixinGunAttack"
+    "common.MixinSkeletonPatch"
   ],
   "client": [
   ],
