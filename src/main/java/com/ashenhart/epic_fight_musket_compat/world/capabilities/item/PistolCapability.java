@@ -2,6 +2,7 @@ package com.ashenhart.epic_fight_musket_compat.world.capabilities.item;
 
 import com.ashenhart.epic_fight_musket_compat.gameassets.MusketAnimations;
 import ewewukek.musketmod.GunItem;
+import ewewukek.musketmod.PistolItem;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.DiggerItem;
@@ -33,7 +34,7 @@ public class PistolCapability extends RangedWeaponCapability {
 
     @Override
     public Style getStyle(LivingEntityPatch<?> entitypatch) {
-        return Styles.RANGED;
+        return Styles.ONE_HAND;
     }
 
     @Override
@@ -55,7 +56,7 @@ public class PistolCapability extends RangedWeaponCapability {
     public LivingMotion getLivingMotion(LivingEntityPatch<?> entitypatch, InteractionHand hand) {
         return entitypatch.getEntityState().canUseItem() &&
                 entitypatch.getOriginal().getMainHandItem().getItem() instanceof GunItem &&
-                GunItem.isLoaded(entitypatch.getOriginal().getMainHandItem())
+                PistolItem.isLoaded(entitypatch.getOriginal().getMainHandItem())
                 ? LivingMotions.AIM : null;
     }
 

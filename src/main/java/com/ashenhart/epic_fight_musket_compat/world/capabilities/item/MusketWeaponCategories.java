@@ -1,12 +1,9 @@
 package com.ashenhart.epic_fight_musket_compat.world.capabilities.item;
 
-import net.minecraft.world.item.Item;
-import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
-import java.util.function.Function;
 
-public enum MusketWeaponCategories implements WeaponCategory, Function<Item, CapabilityItem.Builder> {
+public enum MusketWeaponCategories implements WeaponCategory {
     MUSKET, BAYONET, PISTOL, SCOPED, CEREMONIAL_MUSKET, CEREMONIAL_PISTOL;
 
     final int id;
@@ -18,9 +15,5 @@ public enum MusketWeaponCategories implements WeaponCategory, Function<Item, Cap
     @Override
     public int universalOrdinal() {
         return this.id;
-    }
-    @Override
-    public CapabilityItem.Builder apply(Item item) {
-        return WeaponCategoryMapper.apply(item, this);
     }
 }

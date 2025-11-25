@@ -172,9 +172,10 @@ dependencies {
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
     // The group id is ignored when searching -- in this case, it is "blank"
     // implementation fg.deobf("blank:coolmod-${mc_version}:${coolmod_version}")
-    implementation fg.deobf("curse.maven:epic-fight-mod-405076:6854306")
+    implementation fg.deobf("curse.maven:epic-fight-mod-405076:6921772")
     implementation fg.deobf("curse.maven:ewewukeks-musket-mod-354562:5805565")
-    implementation fg.deobf("curse.maven:parcool-482378:6652972")
+    implementation fg.deobf("curse.maven:geckolib-388172:7025129")
+    implementation fg.deobf("curse.maven:medieval-boomsticks-1123016:5832925")
 
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html

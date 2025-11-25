@@ -49,7 +49,7 @@ public class WeaponCapabilityPresets {
             .addAnimationsModifier(LivingMotions.AIM, MusketAnimations.MUSKET_AIM)
             .addAnimationsModifier(LivingMotions.SHOT, MusketAnimations.MUSKET_SHOT)
             .constructor(BayonetCapability::new)
-            .category(MusketWeaponCategories.MUSKET)
+            .category(MusketWeaponCategories.BAYONET)
             .collider(MusketColliderPreset.MUSKET);
 
     public static final Function<Item, CapabilityItem.Builder> SCOPED = (item) -> RangedWeaponCapability.builder()
@@ -73,7 +73,7 @@ public class WeaponCapabilityPresets {
             .zoomInType(CapabilityItem.ZoomInType.USE_TICK)
             .addAnimationsModifier(LivingMotions.IDLE, MusketAnimations.HOLD_CEREMONIAL_MUSKET)
             .addAnimationsModifier(LivingMotions.WALK, MusketAnimations.WALK_CEREMONIAL_MUSKET)
-            .addAnimationsModifier(LivingMotions.RUN, MusketAnimations.RUN_MUSKET)
+            .addAnimationsModifier(LivingMotions.RUN, MusketAnimations.RUN_CEREMONIAL_MUSKET)
             .addAnimationsModifier(LivingMotions.AIM, MusketAnimations.CEREMONIAL_MUSKET_AIM)
             .collider(MusketColliderPreset.MUSKET)
             .category(MusketWeaponCategories.CEREMONIAL_MUSKET)
@@ -89,6 +89,7 @@ public class WeaponCapabilityPresets {
             .addAnimationsModifier(LivingMotions.KNEEL, MusketAnimations.KNEEL_PISTOL)
             .addAnimationsModifier(LivingMotions.SNEAK, MusketAnimations.SNEAK_PISTOL)
             .addAnimationsModifier(LivingMotions.RELOAD, MusketAnimations.RELOAD_PISTOL)
+            .addAnimationsModifier(LivingMotions.SHOT, MusketAnimations.PISTOL_SHOT)
             .addAnimationsModifier(LivingMotions.AIM, MusketAnimations.PISTOL_AIM)
             .constructor(PistolCapability::new)
             .category(MusketWeaponCategories.PISTOL)

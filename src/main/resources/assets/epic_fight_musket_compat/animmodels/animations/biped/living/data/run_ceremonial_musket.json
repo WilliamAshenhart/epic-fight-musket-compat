@@ -3,8 +3,8 @@
   "priority": "MIDDLE",
   "masks": [
     {
-      "livingmotion": "ALL",
-      "type": "epicfight:upper_joints"
+      "livingmotion": "RUN",
+      "type": "epicfight:root_upper_joints"
     }
   ]
 }

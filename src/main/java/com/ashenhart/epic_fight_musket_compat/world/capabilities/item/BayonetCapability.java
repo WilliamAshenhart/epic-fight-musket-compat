@@ -33,7 +33,7 @@ public class BayonetCapability extends RangedWeaponCapability {
 
         @Override
         public Style getStyle (LivingEntityPatch< ? > entitypatch) {
-            return CapabilityItem.Styles.RANGED;
+            return Styles.TWO_HAND;
         }
 
         @Override

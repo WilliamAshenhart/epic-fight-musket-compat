@@ -2,9 +2,10 @@ package com.ashenhart.epic_fight_musket_compat.world.capabilities.item;
 
 import com.ashenhart.epic_fight_musket_compat.gameassets.MusketAnimations;
 import ewewukek.musketmod.GunItem;
+import ewewukek.musketmod.MusketItem;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionHand;
-import yesman.epicfight.api.animation.AnimationManager;
+import yesman.epicfight.api.animation.AnimationManager.AnimationAccessor;
 import yesman.epicfight.api.animation.LivingMotion;
 import yesman.epicfight.api.animation.LivingMotions;
 import yesman.epicfight.api.animation.types.AttackAnimation;
@@ -20,7 +21,7 @@ import yesman.epicfight.world.capabilities.item.Style;
 import java.util.List;
 
 public class MusketCapability extends RangedWeaponCapability {
-    private List<AnimationManager.AnimationAccessor<? extends AttackAnimation>> attackMotion;
+    private List<AnimationAccessor<? extends AttackAnimation>> attackMotion;
     protected MusketCapability(CapabilityItem.Builder builder) {
         super(builder);
 
@@ -29,7 +30,7 @@ public class MusketCapability extends RangedWeaponCapability {
 
     @Override
     public Style getStyle(LivingEntityPatch<?> entitypatch) {
-        return Styles.RANGED;
+        return Styles.TWO_HAND;
     }
 
     @Override
@@ -43,7 +44,7 @@ public class MusketCapability extends RangedWeaponCapability {
     }
 
     @Override
-    public List<AnimationManager.AnimationAccessor<? extends AttackAnimation>> getAutoAttackMotion(PlayerPatch<?> playerpatch) {
+    public List<AnimationAccessor<? extends AttackAnimation>> getAutoAttackMotion(PlayerPatch<?> playerpatch) {
         return this.attackMotion;
     }
 
@@ -51,7 +52,7 @@ public class MusketCapability extends RangedWeaponCapability {
     public LivingMotion getLivingMotion(LivingEntityPatch<?> entitypatch, InteractionHand hand) {
         return entitypatch.getEntityState().canUseItem() &&
                 entitypatch.getOriginal().getMainHandItem().getItem() instanceof GunItem &&
-                GunItem.isLoaded(entitypatch.getOriginal().getMainHandItem())
+                MusketItem.isLoaded(entitypatch.getOriginal().getMainHandItem())
                 ? LivingMotions.AIM : null;
     }
 }

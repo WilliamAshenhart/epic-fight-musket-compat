@@ -25,7 +25,7 @@ public class CeremonialPistolCapability extends RangedWeaponCapability {
 	protected CeremonialPistolCapability(CapabilityItem.Builder builder) {
 		super(builder);
 
-		this.attackMotion = List.of(MusketAnimations.CEREMONIAL_PISTOL_AUTO1, MusketAnimations.CEREMONIAL_PISTOL_AUTO2, MusketAnimations.PISTOL_DASH, yesman.epicfight.gameasset.Animations.SWORD_AIR_SLASH);
+		this.attackMotion = List.of(MusketAnimations.CEREMONIAL_PISTOL_AUTO_1, MusketAnimations.CEREMONIAL_PISTOL_AUTO_2, MusketAnimations.CEREMONIAL_PISTOL_AUTO_3, MusketAnimations.CEREMONIAL_PISTOL_DASH, yesman.epicfight.gameasset.Animations.SWORD_AIR_SLASH);
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package com.ashenhart.epic_fight_musket_compat.mixin.common;
 
 import ewewukek.musketmod.*;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.monster.Monster;
 import org.spongepowered.asm.mixin.Mixin;
@@ -19,7 +20,7 @@ public class MixinRangedGunAttackGoal {
             method = "tick()V"
     )
     private void epicfight$tick(Monster self) {
-        self.getUsedItemHand();
+        self.startUsingItem(InteractionHand.MAIN_HAND);
 
         EpicFightCapabilities.getUnparameterizedEntityPatch((Entity)self, LivingEntityPatch.class).ifPresent(entitypatch -> {
             entitypatch.playShootingAnimation();

@@ -2,16 +2,16 @@ package com.ashenhart.epic_fight_musket_compat;
 
 import com.ashenhart.epic_fight_musket_compat.gameassets.MusketAnimations;
 import com.ashenhart.epic_fight_musket_compat.world.capabilities.item.MusketWeaponCategories;
-import com.ashenhart.epic_fight_musket_compat.world.capabilities.provider.MusketEntityPatchProvider;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -23,11 +23,6 @@ public class Epic_fight_musket_compat {
         MinecraftForge.EVENT_BUS.register(this);
         WeaponCategory.ENUM_MANAGER.registerEnumCls(MODID, MusketWeaponCategories.class);
         bus.addListener(MusketAnimations::registerAnimations);
-        bus.addListener(this::EntityProviders);
-    }
-
-    private void EntityProviders(final FMLCommonSetupEvent event) {
-        event.enqueueWork(MusketEntityPatchProvider::registerEntityPatches);
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
@@ -35,13 +30,11 @@ public class Epic_fight_musket_compat {
     public void onServerStarting(ServerStartingEvent event) {
     }
 
-    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents {
-
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
-            event.enqueueWork(MusketEntityPatchProvider::registerEntityPatchesClient);
+    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.DEDICATED_SERVER)
+    public static class ServerForgeEvents {
+        @SubscribeEvent(priority = EventPriority.HIGHEST)
+        public static void addMusketReloadListenerEvent(final AddReloadListenerEvent event) {
+            event.addListener(AnimationManager.getInstance());
         }
     }
 }
