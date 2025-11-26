@@ -10,12 +10,20 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch;
 
-@Mixin(value = RangedGunAttackGoal.class, remap = false)
+@Mixin(value = RangedGunAttackGoal.class)
 public class MixinRangedGunAttackGoal {
-    @Shadow
+    
+    @Shadow(remap = false)
     public Monster mob;
 
-    @Inject(method = "fire", at = @At("TAIL"))
+    @Inject(method = "tick", at = @At("HEAD"))
+    private void epicfight_musket_compat$setAggressive(CallbackInfo ci) {
+        if (!this.mob.isAggressive()) {
+            this.mob.setAggressive(true);
+        }
+    }
+
+    @Inject(method = "fire", at = @At("TAIL"), remap = false)
     private void epicfight_musket_compat$onFire(float spread, CallbackInfo ci) {
         // Retrieve the Epic Fight entity patch for the mob and play the shooting animation
         EpicFightCapabilities.getUnparameterizedEntityPatch(this.mob, LivingEntityPatch.class)
