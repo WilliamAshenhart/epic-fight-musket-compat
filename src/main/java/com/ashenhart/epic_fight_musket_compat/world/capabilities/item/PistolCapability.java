@@ -107,15 +107,7 @@ public class PistolCapability extends RangedWeaponCapability {
     }
 
     @Override
-    public boolean checkOffhandValid(LivingEntityPatch<?> entityPatch) {
-        ItemStack offhandItem = entityPatch.getOriginal().getOffhandItem();
-        CapabilityItem itemCap = EpicFightCapabilities.getItemStackCapability(offhandItem);
-        boolean isPistol = itemCap.getWeaponCategory() == MusketWeaponCategories.PISTOL;
-        return isPistol || !(offhandItem.getItem() instanceof SwordItem || offhandItem.getItem() instanceof DiggerItem);
-    }
-
-    @Override
-    public boolean canHoldInOffhandAlone() {
+    public boolean canBePlacedOffhand() {
         return true;
     }
 }
