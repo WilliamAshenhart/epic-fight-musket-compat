@@ -12,7 +12,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import yesman.epicfight.api.animation.LivingMotions;
 import yesman.epicfight.world.capabilities.entitypatch.MobPatch;
 
-import java.util.Iterator;
 import java.util.Set;
 
 @Mixin(value = MobPatch.class, remap = false)
@@ -20,13 +19,7 @@ public class MixinMobPatch {
 
     @Inject(method = "selectGoalToRemove", at = @At("TAIL"))
     private void epicfight_musket_compat$keepGunGoals(Set<Goal> toRemove, CallbackInfo ci) {
-        Iterator<Goal> iterator = toRemove.iterator();
-        while (iterator.hasNext()) {
-            Goal goal = iterator.next();
-            if (goal instanceof RangedGunAttackGoal) {
-                iterator.remove();
-            }
-        }
+        toRemove.removeIf(goal -> goal instanceof RangedGunAttackGoal);
     }
 
     // Inject into the Ranged Update path (Standard procedure)

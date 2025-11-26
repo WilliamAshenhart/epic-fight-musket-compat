@@ -93,14 +93,14 @@ public class MusketAnimations {
         RUN_CEREMONIAL_MUSKET = builder.nextAccessor("biped/living/run_ceremonial_musket", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
         CEREMONIAL_MUSKET_AIM = builder.nextAccessor("biped/combat/ceremonial_musket_aim", (accessor) -> new AimAnimation(true, accessor, "biped/combat/ceremonial_musket_aim_mid", "biped/combat/ceremonial_musket_aim_up", "biped/combat/ceremonial_musket_aim_down", "biped/combat/ceremonial_musket_aim_lying", Armatures.BIPED));
         CEREMONIAL_MUSKET_AUTO_1 = builder.nextAccessor("biped/combat/ceremonial_musket_auto_1", (accessor) ->
-                new BasicAttackAnimation(0.1F, 0.3F, 0.4F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,4.1F));
+                new BasicAttackAnimation(0.1F, 0.7F, 0.8F, 0.9F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,2.1F));
         CEREMONIAL_MUSKET_AUTO_2 = builder.nextAccessor("biped/combat/ceremonial_musket_auto_2", (accessor) ->
-                new BasicAttackAnimation(0.1F, 0.3F, 0.4F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,4.1F));
+                new BasicAttackAnimation(0.1F, 0.5F, 0.6F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,2.1F));
         CEREMONIAL_MUSKET_AUTO_3 = builder.nextAccessor("biped/combat/ceremonial_musket_auto_3", (accessor) ->
-                new BasicAttackAnimation(0.1F, 0.3F, 0.4F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,4.1F));
+                new BasicAttackAnimation(0.1F, 0.5F, 0.6F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,2.1F));
         MUSKET_AIM = builder.nextAccessor("biped/combat/musket_aim", (accessor) -> new AimAnimation(true, accessor, "biped/combat/musket_aim_mid", "biped/combat/musket_aim_up", "biped/combat/musket_aim_down", "biped/combat/musket_aim_lying", Armatures.BIPED));
         MUSKET_SHOT = builder.nextAccessor("biped/combat/musket_shot", (accessor) -> new ReboundAnimation(false, accessor, "biped/combat/musket_shot_mid", "biped/combat/musket_shot_up", "biped/combat/musket_shot_down", "biped/combat/musket_shot_lying", Armatures.BIPED));
         WALK_MUSKET = builder.nextAccessor("biped/living/walk_musket", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));

@@ -12,6 +12,8 @@ import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.LivingMotion;
 import yesman.epicfight.api.animation.LivingMotions;
 import yesman.epicfight.api.animation.types.AttackAnimation;
+import yesman.epicfight.api.animation.types.MountAttackAnimation;
+import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.particle.EpicFightParticles;
 import yesman.epicfight.particle.HitParticleType;
@@ -26,15 +28,12 @@ import java.util.List;
 
 public class PistolCapability extends RangedWeaponCapability {
     private List<AnimationManager.AnimationAccessor<? extends AttackAnimation>> attackMotion;
+    private List<AnimationManager.AnimationAccessor<? extends AttackAnimation>> mountAttackMotion;
     protected PistolCapability(CapabilityItem.Builder builder) {
         super(builder);
 
         this.attackMotion = List.of(MusketAnimations.PISTOL_AUTO_1, MusketAnimations.PISTOL_AUTO_2, MusketAnimations.PISTOL_AUTO_3, MusketAnimations.PISTOL_DASH, yesman.epicfight.gameasset.Animations.SWORD_AIR_SLASH);
-    }
-
-    @Override
-    public Style getStyle(LivingEntityPatch<?> entitypatch) {
-        return Styles.ONE_HAND;
+        this.mountAttackMotion = List.of(Animations.SWORD_MOUNT_ATTACK);
     }
 
     @Override
@@ -52,6 +51,11 @@ public class PistolCapability extends RangedWeaponCapability {
         return this.attackMotion;
     }
 
+    public List<AnimationManager.AnimationAccessor<? extends AttackAnimation>> getMountAttackMotion() {
+        return this.mountAttackMotion;
+    }
+
+
     @Override
     public LivingMotion getLivingMotion(LivingEntityPatch<?> entitypatch, InteractionHand hand) {
         return entitypatch.getEntityState().canUseItem() &&
@@ -61,16 +65,10 @@ public class PistolCapability extends RangedWeaponCapability {
     }
 
     @Override
-    public boolean checkOffhandValid(LivingEntityPatch<?> entityPatch) {
-        ItemStack offhandItem = entityPatch.getOriginal().getOffhandItem();
-        CapabilityItem itemCap = EpicFightCapabilities.getItemStackCapability(offhandItem);
-        boolean isPistol = itemCap.getWeaponCategory() == MusketWeaponCategories.PISTOL;
-        return isPistol || !(offhandItem.getItem() instanceof SwordItem || offhandItem.getItem() instanceof DiggerItem);
+    public Style getStyle(LivingEntityPatch<?> entitypatch) {
+        if (entitypatch.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == MusketWeaponCategories.PISTOL) {
+            return Styles.TWO_HAND;
+        }
+        return Styles.ONE_HAND;
     }
-
-    @Override
-    public boolean canHoldInOffhandAlone() {
-        return true;
-    }
-
 }
