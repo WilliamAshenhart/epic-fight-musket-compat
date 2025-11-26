@@ -1,11 +1,14 @@
 package com.ashenhart.epic_fight_musket_compat.mixin.common;
 
+import ewewukek.musketmod.GunItem;
 import ewewukek.musketmod.RangedGunAttackGoal;
 import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import yesman.epicfight.api.animation.LivingMotions;
 import yesman.epicfight.world.capabilities.entitypatch.MobPatch;
 
 import java.util.Iterator;
@@ -22,6 +25,16 @@ public class MixinMobPatch {
             if (goal instanceof RangedGunAttackGoal) {
                 iterator.remove();
             }
+        }
+    }
+
+    @Inject(method = "commonAggressiveRangedMobUpdateMotion", at = @At("TAIL"))
+    private void epicfight_musket_compat$setGunAimMotion(boolean considerInaction, CallbackInfo ci) {
+        MobPatch<?> self = (MobPatch<?>) (Object) this;
+        ItemStack mainHandItem = self.getOriginal().getMainHandItem();
+
+        if (mainHandItem.getItem() instanceof GunItem && GunItem.isLoaded(mainHandItem)) {
+            self.currentCompositeMotion = LivingMotions.AIM;
         }
     }
 }
