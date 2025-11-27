@@ -58,7 +58,6 @@ public class PistolCapability extends RangedWeaponCapability {
         this.offHandLivingMotions.put(LivingMotions.WALK, Animations.BIPED_HOLD_DUAL_WEAPON);
         this.offHandLivingMotions.put(LivingMotions.RUN, Animations.BIPED_RUN_DUAL);
     }
-
     @Override
     public Map<LivingMotion, AnimationManager.AnimationAccessor<? extends StaticAnimation>> getLivingMotionModifier(LivingEntityPatch<?> playerdata, InteractionHand hand) {
         if (hand == InteractionHand.MAIN_HAND) {
@@ -72,7 +71,7 @@ public class PistolCapability extends RangedWeaponCapability {
         }
         if (hand == InteractionHand.OFF_HAND) {
             Item mainHandItem = playerdata.getOriginal().getMainHandItem().getItem();
-            if (!(mainHandItem instanceof GunItem) && !(mainHandItem instanceof ProjectileWeaponItem)) {
+            if (!(mainHandItem instanceof GunItem) && !(mainHandItem instanceof TridentItem) && !(mainHandItem instanceof ProjectileWeaponItem)) {
                 return this.offHandLivingMotions;
             }
         }
@@ -109,7 +108,7 @@ public class PistolCapability extends RangedWeaponCapability {
     @Override
     public LivingMotion getLivingMotion(LivingEntityPatch<?> entitypatch, InteractionHand hand) {
         return entitypatch.getEntityState().canUseItem() &&
-                entitypatch.getOriginal().getMainHandItem().getItem() instanceof GunItem &&
+                entitypatch.getOriginal().getItemInHand(hand).getItem() instanceof GunItem &&
                 PistolItem.isLoaded(entitypatch.getOriginal().getMainHandItem())
                 ? LivingMotions.AIM : null;
     }
