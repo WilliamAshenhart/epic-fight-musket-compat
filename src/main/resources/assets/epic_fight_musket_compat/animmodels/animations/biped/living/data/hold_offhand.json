@@ -1,0 +1,14 @@
+{
+  "layer": "COMPOSITE_LAYER",
+  "priority": "MIDDLE",
+  "masks": [
+    {
+      "livingmotion": "ALL",
+      "type": "epicfight:upper_joints"
+    },
+    {
+      "livingmotion": "IDLE",
+      "type": "epicfight:none"
+    }
+  ]
+}
