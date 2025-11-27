@@ -129,14 +129,14 @@ public class PistolCapability extends RangedWeaponCapability {
 
     @Override
     public Style getStyle(LivingEntityPatch<?> entitypatch) {
-        if (entitypatch.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == MusketWeaponCategories.PISTOL) {
-            return Styles.COMMON;
-        }
         if (entitypatch.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == MusketWeaponCategories.PISTOL && (entitypatch.getHoldingItemCapability(InteractionHand.MAIN_HAND).getWeaponCategory() == WeaponCategories.SWORD || entitypatch.getHoldingItemCapability(InteractionHand.MAIN_HAND).getWeaponCategory() == WeaponCategories.PICKAXE || entitypatch.getHoldingItemCapability(InteractionHand.MAIN_HAND).getWeaponCategory() == WeaponCategories.AXE || entitypatch.getHoldingItemCapability(InteractionHand.MAIN_HAND).getWeaponCategory() == WeaponCategories.SHOVEL || entitypatch.getHoldingItemCapability(InteractionHand.MAIN_HAND).getWeaponCategory() == WeaponCategories.HOE)) {
             return Styles.ONE_HAND;
         }
         if (entitypatch.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == MusketWeaponCategories.PISTOL && entitypatch.getHoldingItemCapability(InteractionHand.MAIN_HAND).getWeaponCategory() == MusketWeaponCategories.PISTOL) {
             return Styles.TWO_HAND;
+        }
+        if (entitypatch.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == MusketWeaponCategories.PISTOL) {
+            return Styles.COMMON;
         }
         return Styles.RANGED;
     }
