@@ -6,9 +6,7 @@ import ewewukek.musketmod.GunItem;
 import ewewukek.musketmod.PistolItem;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.item.DiggerItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.*;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.LivingMotion;
 import yesman.epicfight.api.animation.LivingMotions;
@@ -64,14 +62,19 @@ public class PistolCapability extends RangedWeaponCapability {
     @Override
     public Map<LivingMotion, AnimationManager.AnimationAccessor<? extends StaticAnimation>> getLivingMotionModifier(LivingEntityPatch<?> playerdata, InteractionHand hand) {
         if (hand == InteractionHand.MAIN_HAND) {
+            Style currentStyle = this.getStyle(playerdata);
+
+            if (currentStyle == Styles.TWO_HAND) {
+                return this.dualWieldLivingMotions;
+            }
+
             return this.rangeAnimationModifiers;
         }
-        if (hand == InteractionHand.MAIN_HAND && hand == InteractionHand.OFF_HAND) {
-            return this.dualWieldLivingMotions;
-        }
-
         if (hand == InteractionHand.OFF_HAND) {
-            return this.offHandLivingMotions;
+            Item mainHandItem = playerdata.getOriginal().getMainHandItem().getItem();
+            if (!(mainHandItem instanceof GunItem) && !(mainHandItem instanceof ProjectileWeaponItem)) {
+                return this.offHandLivingMotions;
+            }
         }
 
         return super.getLivingMotionModifier(playerdata, hand);
