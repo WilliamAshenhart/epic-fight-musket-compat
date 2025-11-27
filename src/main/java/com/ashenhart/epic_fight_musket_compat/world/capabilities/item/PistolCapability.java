@@ -44,8 +44,10 @@ public class PistolCapability extends RangedWeaponCapability {
 
         this.dualWieldLivingMotions = Maps.newHashMap(this.rangeAnimationModifiers);
 
-        this.dualWieldLivingMotions.put(LivingMotions.IDLE, MusketAnimations.HOLD_DUAL_PISTOL);
-        this.dualWieldLivingMotions.put(LivingMotions.RUN, MusketAnimations.RUN_DUAL_PISTOL);
+        this.dualWieldLivingMotions.put(LivingMotions.IDLE, Animations.BIPED_HOLD_DUAL_WEAPON);
+        this.dualWieldLivingMotions.put(LivingMotions.AIM, MusketAnimations.HOLD_DUAL_PISTOL);
+        this.dualWieldLivingMotions.put(LivingMotions.WALK, Animations.BIPED_HOLD_DUAL_WEAPON);
+        this.dualWieldLivingMotions.put(LivingMotions.RUN, Animations.BIPED_RUN_DUAL);
     }
 
     @Override
@@ -109,5 +111,13 @@ public class PistolCapability extends RangedWeaponCapability {
     @Override
     public boolean canBePlacedOffhand() {
         return true;
+    }
+
+    @Override
+    public boolean checkOffhandValid(LivingEntityPatch<?> entityPatch) {
+        ItemStack offhandItem = entityPatch.getOriginal().getOffhandItem();
+        CapabilityItem itemCap = EpicFightCapabilities.getItemStackCapability(offhandItem);
+        boolean isPistol = itemCap.getWeaponCategory() == MusketWeaponCategories.PISTOL;
+        return isPistol || !(offhandItem.getItem() instanceof SwordItem || offhandItem.getItem() instanceof DiggerItem);
     }
 }

@@ -22,7 +22,6 @@ public class MixinMobPatch {
         toRemove.removeIf(goal -> goal instanceof RangedGunAttackGoal);
     }
 
-    // Inject into the Ranged Update path (Standard procedure)
     @Inject(method = "commonAggressiveRangedMobUpdateMotion", at = @At("TAIL"))
     private void epicfight_musket_compat$setGunAimMotion(boolean considerInaction, CallbackInfo ci) {
         this.epicfight_musket_compat$applyAimMotion();
@@ -38,7 +37,7 @@ public class MixinMobPatch {
         MobPatch<?> self = (MobPatch<?>) (Object) this;
         ItemStack mainHandItem = self.getOriginal().getMainHandItem();
 
-        if (mainHandItem.getItem() instanceof GunItem) {
+        if (mainHandItem.getItem() instanceof GunItem && GunItem.isLoaded(self.getOriginal().getMainHandItem())) {
             if (!self.getOriginal().isUsingItem()) {
                 self.currentCompositeMotion = LivingMotions.AIM;
             }

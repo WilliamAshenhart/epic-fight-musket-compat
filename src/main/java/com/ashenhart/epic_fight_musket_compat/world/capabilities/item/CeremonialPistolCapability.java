@@ -3,6 +3,9 @@ package com.ashenhart.epic_fight_musket_compat.world.capabilities.item;
 import com.ashenhart.epic_fight_musket_compat.gameassets.MusketAnimations;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.item.DiggerItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.UseAnim;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.LivingMotion;
@@ -11,6 +14,7 @@ import yesman.epicfight.api.animation.types.AttackAnimation;
 import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.particle.EpicFightParticles;
 import yesman.epicfight.particle.HitParticleType;
+import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
@@ -51,5 +55,13 @@ public class CeremonialPistolCapability extends RangedWeaponCapability {
 	@Override
 	public LivingMotion getLivingMotion(LivingEntityPatch<?> entitypatch, InteractionHand hand) {
 		return entitypatch.getOriginal().isUsingItem() && entitypatch.getOriginal().getUseItem().getUseAnimation() == UseAnim.BOW ? LivingMotions.AIM : null;
+	}
+
+	@Override
+	public boolean checkOffhandValid(LivingEntityPatch<?> entityPatch) {
+		ItemStack offhandItem = entityPatch.getOriginal().getOffhandItem();
+		CapabilityItem itemCap = EpicFightCapabilities.getItemStackCapability(offhandItem);
+		boolean isPistol = itemCap.getWeaponCategory() == MusketWeaponCategories.CEREMONIAL_PISTOL;
+		return isPistol || !(offhandItem.getItem() instanceof SwordItem || offhandItem.getItem() instanceof DiggerItem);
 	}
 }

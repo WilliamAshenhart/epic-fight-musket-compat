@@ -2,6 +2,7 @@ package com.ashenhart.epic_fight_musket_compat.mixin.common;
 
 import ewewukek.musketmod.*;
 import net.minecraft.world.entity.monster.Monster;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -13,6 +14,7 @@ import yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch;
 @Mixin(value = RangedGunAttackGoal.class)
 public class MixinRangedGunAttackGoal {
     
+    @Final
     @Shadow(remap = false)
     public Monster mob;
 
@@ -25,7 +27,6 @@ public class MixinRangedGunAttackGoal {
 
     @Inject(method = "fire", at = @At("TAIL"), remap = false)
     private void epicfight_musket_compat$onFire(float spread, CallbackInfo ci) {
-        // Retrieve the Epic Fight entity patch for the mob and play the shooting animation
         EpicFightCapabilities.getUnparameterizedEntityPatch(this.mob, LivingEntityPatch.class)
                 .ifPresent(LivingEntityPatch::playShootingAnimation);
     }
