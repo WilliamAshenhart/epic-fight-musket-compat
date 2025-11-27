@@ -109,7 +109,7 @@ public class PistolCapability extends RangedWeaponCapability {
     public LivingMotion getLivingMotion(LivingEntityPatch<?> entitypatch, InteractionHand hand) {
         return entitypatch.getEntityState().canUseItem() &&
                 entitypatch.getOriginal().getItemInHand(hand).getItem() instanceof GunItem &&
-                PistolItem.isLoaded(entitypatch.getOriginal().getMainHandItem())
+                PistolItem.isLoaded(entitypatch.getOriginal().getItemInHand(hand))
                 ? LivingMotions.AIM : null;
     }
 
