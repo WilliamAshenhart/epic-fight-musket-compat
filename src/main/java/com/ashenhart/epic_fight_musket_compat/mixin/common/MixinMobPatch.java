@@ -37,7 +37,7 @@ public class MixinMobPatch {
         MobPatch<?> self = (MobPatch<?>) (Object) this;
         ItemStack mainHandItem = self.getOriginal().getMainHandItem();
 
-        if (mainHandItem.getItem() instanceof GunItem && GunItem.isLoaded(self.getOriginal().getMainHandItem())) {
+        if (mainHandItem.getItem() instanceof GunItem) {
             if (!self.getOriginal().isUsingItem()) {
                 self.currentCompositeMotion = LivingMotions.AIM;
             }

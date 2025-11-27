@@ -49,6 +49,10 @@ public class MusketAnimations {
     public static AnimationAccessor<MovementAnimation> RUN_PISTOL;
     public static AnimationAccessor<StaticAnimation> RELOAD_PISTOL;
     public static AnimationAccessor<StaticAnimation> HOLD_DUAL_PISTOL;
+    public static AnimationAccessor<ReboundAnimation> DUAL_PISTOL_SHOT;
+    public static AnimationAccessor<StaticAnimation> HOLD_OFFHAND;
+    public static AnimationAccessor<StaticAnimation> RELOAD_OFFHAND;
+    public static AnimationAccessor<ReboundAnimation> OFFHAND_SHOT;
     public static AnimationAccessor<BasicAttackAnimation> DUAL_PISTOL_AUTO1;
     public static AnimationAccessor<BasicAttackAnimation> DUAL_PISTOL_AUTO2;
     public static AnimationAccessor<DashAttackAnimation> DUAL_PISTOL_DASH;
@@ -129,6 +133,10 @@ public class MusketAnimations {
         WALK_PISTOL = builder.nextAccessor("biped/living/walk_pistol", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
         RELOAD_PISTOL = builder.nextAccessor("biped/living/reload_pistol", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
         HOLD_DUAL_PISTOL = builder.nextAccessor("biped/living/hold_dual_pistol", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        DUAL_PISTOL_SHOT = builder.nextAccessor("biped/combat/dual_pistol_shot", (accessor) -> new ReboundAnimation(false, accessor, "biped/combat/dual_pistol_shot_mid", "biped/combat/dual_pistol_shot_up", "biped/combat/dual_pistol_shot_down", "biped/combat/dual_pistol_shot_lying", Armatures.BIPED));
+        HOLD_OFFHAND = builder.nextAccessor("biped/living/hold_offhand", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        RELOAD_OFFHAND = builder.nextAccessor("biped/living/reload_offhand", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        OFFHAND_SHOT = builder.nextAccessor("biped/combat/offhand_shot", (accessor) -> new ReboundAnimation(false, accessor, "biped/combat/offhand_shot_mid", "biped/combat/offhand_shot_up", "biped/combat/offhand_shot_down", "biped/combat/offhand_shot_lying", Armatures.BIPED));
         DUAL_PISTOL_AUTO1 = builder.nextAccessor("biped/combat/dual_pistol_auto1", (accessor) ->
                 new BasicAttackAnimation(0.1F, 0.2F, 0.4F, 0.6F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,2.1F));

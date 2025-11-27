@@ -20,7 +20,7 @@ import yesman.epicfight.world.capabilities.item.Style;
 import java.util.List;
 
 public class CeremonialMusketCapability extends RangedWeaponCapability {
-	private List<AnimationManager.AnimationAccessor<? extends AttackAnimation>> attackMotion;
+	private final List<AnimationManager.AnimationAccessor<? extends AttackAnimation>> attackMotion;
 	protected CeremonialMusketCapability(CapabilityItem.Builder builder) {
 		super(builder);
 		this.attackMotion = List.of(MusketAnimations.CEREMONIAL_MUSKET_AUTO_1, MusketAnimations.CEREMONIAL_MUSKET_AUTO_2, MusketAnimations.CEREMONIAL_MUSKET_AUTO_3, MusketAnimations.MUSKET_DASH, yesman.epicfight.gameasset.Animations.SPEAR_TWOHAND_AIR_SLASH);

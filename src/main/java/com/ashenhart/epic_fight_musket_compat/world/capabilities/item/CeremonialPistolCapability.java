@@ -24,7 +24,7 @@ import yesman.epicfight.world.capabilities.item.Style;
 import java.util.List;
 
 public class CeremonialPistolCapability extends RangedWeaponCapability {
-	private List<AnimationManager.AnimationAccessor<? extends AttackAnimation>> attackMotion;
+	private final List<AnimationManager.AnimationAccessor<? extends AttackAnimation>> attackMotion;
 
 	protected CeremonialPistolCapability(CapabilityItem.Builder builder) {
 		super(builder);

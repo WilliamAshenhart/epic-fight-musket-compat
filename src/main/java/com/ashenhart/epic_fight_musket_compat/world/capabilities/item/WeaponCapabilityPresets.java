@@ -93,7 +93,7 @@ public class WeaponCapabilityPresets {
             .addAnimationsModifier(LivingMotions.AIM, MusketAnimations.PISTOL_AIM)
             .constructor(PistolCapability::new)
             .category(MusketWeaponCategories.PISTOL)
-            .collider(ColliderPreset.FIST);
+            .collider(ColliderPreset.TOOLS);
 
     public static final Function<Item, CapabilityItem.Builder> CEREMONIAL_PISTOL =  (item) -> RangedWeaponCapability.builder()
             .zoomInType(CapabilityItem.ZoomInType.USE_TICK)

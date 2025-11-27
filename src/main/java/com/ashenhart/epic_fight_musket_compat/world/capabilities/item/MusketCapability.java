@@ -21,7 +21,7 @@ import yesman.epicfight.world.capabilities.item.Style;
 import java.util.List;
 
 public class MusketCapability extends RangedWeaponCapability {
-    private List<AnimationAccessor<? extends AttackAnimation>> attackMotion;
+    private final List<AnimationAccessor<? extends AttackAnimation>> attackMotion;
     protected MusketCapability(CapabilityItem.Builder builder) {
         super(builder);
 

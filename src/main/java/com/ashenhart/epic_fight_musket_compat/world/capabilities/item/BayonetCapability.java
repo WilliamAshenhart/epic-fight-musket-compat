@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class BayonetCapability extends RangedWeaponCapability {
-        private List<AnimationManager.AnimationAccessor<? extends AttackAnimation>> attackMotion;
+        private final List<AnimationManager.AnimationAccessor<? extends AttackAnimation>> attackMotion;
     protected BayonetCapability(CapabilityItem.Builder builder) {
             super(builder);
 
