@@ -32,5 +32,13 @@ public class MusketCompatEvents {
 
     private static void registerEntityTypeArmatures() {
         Armatures.registerEntityTypeArmature(ModEntityTypes.RECRUIT.get(), Armatures.BIPED);
+        Armatures.registerEntityTypeArmature(ModEntityTypes.BOWMAN.get(), Armatures.BIPED);
+        Armatures.registerEntityTypeArmature(ModEntityTypes.CROSSBOWMAN.get(), Armatures.BIPED);
+        Armatures.registerEntityTypeArmature(ModEntityTypes.HORSEMAN.get(), Armatures.BIPED);
+        Armatures.registerEntityTypeArmature(ModEntityTypes.RECRUIT_SHIELDMAN.get(), Armatures.BIPED);
+        Armatures.registerEntityTypeArmature(ModEntityTypes.NOMAD.get(), Armatures.BIPED);
+        Armatures.registerEntityTypeArmature(ModEntityTypes.CAPTAIN.get(), Armatures.BIPED);
+        Armatures.registerEntityTypeArmature(ModEntityTypes.PATROL_LEADER.get(), Armatures.BIPED);
+        Armatures.registerEntityTypeArmature(ModEntityTypes.SCOUT.get(), Armatures.BIPED);
     }
 }

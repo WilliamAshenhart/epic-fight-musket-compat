@@ -17,5 +17,50 @@ public class MusketCompatClientEvents {
                         entityType
                 )
         );
+        event.addPatchedEntityRenderer(ModEntityTypes.SCOUT.get(), entityType -> new PRecruitRenderer(
+                        event.getContext(),
+                        entityType
+                )
+        );
+        event.addPatchedEntityRenderer(ModEntityTypes.BOWMAN.get(), entityType -> new PRecruitRenderer(
+                        event.getContext(),
+                        entityType
+                )
+        );
+        event.addPatchedEntityRenderer(ModEntityTypes.PATROL_LEADER.get(), entityType -> new PRecruitRenderer(
+                        event.getContext(),
+                        entityType
+                )
+        );
+        event.addPatchedEntityRenderer(ModEntityTypes.NOMAD.get(), entityType -> new PRecruitRenderer(
+                        event.getContext(),
+                        entityType
+                )
+        );
+        event.addPatchedEntityRenderer(ModEntityTypes.RECRUIT_SHIELDMAN.get(), entityType -> new PRecruitRenderer(
+                        event.getContext(),
+                        entityType
+                )
+        );
+        event.addPatchedEntityRenderer(ModEntityTypes.HORSEMAN.get(), entityType -> new PRecruitRenderer(
+                        event.getContext(),
+                        entityType
+                )
+        );
+        event.addPatchedEntityRenderer(ModEntityTypes.CROSSBOWMAN.get(), entityType -> new PRecruitRenderer(
+                        event.getContext(),
+                        entityType
+                )
+        );
+        event.addPatchedEntityRenderer(ModEntityTypes.CAPTAIN.get(), entityType -> new PRecruitRenderer(
+                        event.getContext(),
+                        entityType
+                )
+        );
+        event.addPatchedEntityRenderer(ModEntityTypes.MESSENGER.get(), entityType -> new PRecruitRenderer(
+                        event.getContext(),
+                        entityType
+                )
+        );
     }
 }

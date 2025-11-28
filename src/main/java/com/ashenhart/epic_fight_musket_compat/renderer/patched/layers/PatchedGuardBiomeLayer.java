@@ -19,7 +19,7 @@ import yesman.epicfight.client.mesh.VillagerMesh;
 import yesman.epicfight.client.renderer.patched.layer.ModelRenderLayer;
 
 @OnlyIn(Dist.CLIENT)
-public class PatchedGuardProfessionLayer extends ModelRenderLayer<AbstractRecruitEntity, AbstractRecruitPatch<AbstractRecruitEntity>, RecruitVillagerModel, RenderLayer<AbstractRecruitEntity, RecruitVillagerModel>, VillagerMesh> {
+public class PatchedGuardBiomeLayer extends ModelRenderLayer<AbstractRecruitEntity, AbstractRecruitPatch<AbstractRecruitEntity>, RecruitVillagerModel, RenderLayer<AbstractRecruitEntity, RecruitVillagerModel>, VillagerMesh> {
     private static final ResourceLocation[] BIOME_TEXTURE = new ResourceLocation[]{
             ResourceLocation.fromNamespaceAndPath("recruits", "textures/entity/villager/biome/villager_desert.png"),
             ResourceLocation.fromNamespaceAndPath("recruits", "textures/entity/villager/biome/villager_jungle.png"),
@@ -30,7 +30,7 @@ public class PatchedGuardProfessionLayer extends ModelRenderLayer<AbstractRecrui
             ResourceLocation.fromNamespaceAndPath("recruits", "textures/entity/villager/biome/villager_taiga.png")
     };
 
-    public PatchedGuardProfessionLayer() {
+    public PatchedGuardBiomeLayer() {
         super(Meshes.VILLAGER_ZOMBIE);
     }
 
