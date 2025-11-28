@@ -51,12 +51,12 @@ public class PistolCapability extends RangedWeaponCapability {
 
         this.offHandLivingMotions = Maps.newHashMap(this.rangeAnimationModifiers);
 
-        this.offHandLivingMotions.put(LivingMotions.IDLE, Animations.BIPED_HOLD_DUAL_WEAPON);
+        this.offHandLivingMotions.put(LivingMotions.IDLE, Animations.BIPED_IDLE);
         this.offHandLivingMotions.put(LivingMotions.AIM, MusketAnimations.HOLD_OFFHAND);
         this.offHandLivingMotions.put(LivingMotions.SHOT, MusketAnimations.OFFHAND_SHOT);
         this.offHandLivingMotions.put(LivingMotions.RELOAD, MusketAnimations.RELOAD_OFFHAND);
         this.offHandLivingMotions.put(LivingMotions.WALK, Animations.BIPED_HOLD_DUAL_WEAPON);
-        this.offHandLivingMotions.put(LivingMotions.RUN, Animations.BIPED_RUN_DUAL);
+        this.offHandLivingMotions.put(LivingMotions.RUN, Animations.BIPED_RUN);
     }
     @Override
     public Map<LivingMotion, AnimationManager.AnimationAccessor<? extends StaticAnimation>> getLivingMotionModifier(LivingEntityPatch<?> playerdata, InteractionHand hand) {
