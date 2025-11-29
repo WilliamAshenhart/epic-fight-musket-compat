@@ -18,6 +18,7 @@ public abstract class AbstractRecruitPatch<T extends PathfinderMob> extends Huma
 
         animator.addLivingAnimation(LivingMotions.IDLE, Animations.BIPED_IDLE);
         animator.addLivingAnimation(LivingMotions.WALK, Animations.BIPED_WALK);
+        animator.addLivingAnimation(LivingMotions.BLOCK_SHIELD, Animations.BIPED_BLOCK);
         animator.addLivingAnimation(LivingMotions.DEATH, Animations.BIPED_DEATH);
     }
 }

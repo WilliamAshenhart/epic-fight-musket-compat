@@ -1,4 +1,4 @@
-package com.ashenhart.epic_fight_musket_compat.renderer.patched.layers;
+package com.ashenhart.epic_fight_musket_compat.client.renderer.patched.layers;
 
 import com.ashenhart.epic_fight_musket_compat.world.capabilities.entitypatch.mob.AbstractRecruitPatch;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -19,7 +19,7 @@ import yesman.epicfight.client.mesh.VillagerMesh;
 import yesman.epicfight.client.renderer.patched.layer.ModelRenderLayer;
 
 @OnlyIn(Dist.CLIENT)
-public class PatchedGuardBiomeLayer extends ModelRenderLayer<AbstractRecruitEntity, AbstractRecruitPatch<AbstractRecruitEntity>, RecruitVillagerModel, RenderLayer<AbstractRecruitEntity, RecruitVillagerModel>, VillagerMesh> {
+public class PatchedRecruitBiomeLayer extends ModelRenderLayer<AbstractRecruitEntity, AbstractRecruitPatch<AbstractRecruitEntity>, RecruitVillagerModel, RenderLayer<AbstractRecruitEntity, RecruitVillagerModel>, VillagerMesh> {
     private static final ResourceLocation[] BIOME_TEXTURE = new ResourceLocation[]{
             ResourceLocation.fromNamespaceAndPath("recruits", "textures/entity/villager/biome/villager_desert.png"),
             ResourceLocation.fromNamespaceAndPath("recruits", "textures/entity/villager/biome/villager_jungle.png"),
@@ -30,7 +30,7 @@ public class PatchedGuardBiomeLayer extends ModelRenderLayer<AbstractRecruitEnti
             ResourceLocation.fromNamespaceAndPath("recruits", "textures/entity/villager/biome/villager_taiga.png")
     };
 
-    public PatchedGuardBiomeLayer() {
+    public PatchedRecruitBiomeLayer() {
         super(Meshes.VILLAGER_ZOMBIE);
     }
 

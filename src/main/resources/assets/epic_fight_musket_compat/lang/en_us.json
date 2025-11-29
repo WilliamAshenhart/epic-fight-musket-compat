@@ -6,5 +6,9 @@
     "epicfight.weapon_category.ceremonial_musket": "Ceremonial Musket",
     "epicfight.weapon_category.ceremonial_musket": "Ceremonial Pistol",
     "skill.epic_fight_musket_compat.last_push": "Last Push",
-	"skill.epic_fight_musket_compat.last_push.tooltip": "Throw your soldiers into positions whence there is no escape, and they will prefer death to flight"
+	"skill.epic_fight_musket_compat.last_push.tooltip": "Throw your soldiers into positions whence there is no escape, and they will prefer death to flight",
+    "item.epic_fight_musket_compat.musketeer_hat" : "Musketeer Hat",
+    "item.epic_fight_musket_compat.musketeer_vest" : "Musketeer Vest",
+    "item.epic_fight_musket_compat.musketeer_trousers" : "Musketeer Trousers",
+    "item.epic_fight_musket_compat.musketeer_boots" : "Musketeer Boots"
 }

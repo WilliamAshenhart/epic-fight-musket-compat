@@ -17,6 +17,7 @@ import yesman.epicfight.particle.EpicFightParticles;
 
 public class MusketAnimations {
 
+    public static AnimationAccessor<StaticAnimation> RECRUIT_SPEAR_LIVING;
     public static AnimationAccessor<StaticAnimation> HOLD_MUSKET;
     public static AnimationAccessor<StaticAnimation> HOLD_CEREMONIAL_MUSKET;
     public static AnimationAccessor<MovementAnimation> WALK_CEREMONIAL_MUSKET;
@@ -147,8 +148,8 @@ public class MusketAnimations {
                 new DashAttackAnimation(0.1F, 0.0F, 0.2F, 0.4F, 0.65F, null, Armatures.BIPED.get().toolL, accessor, Armatures.BIPED, true)
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.6F))
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,2.1F));
-        DUAL_PISTOL_AIRSLASH = builder.nextAccessor("biped/combat/dual_pistol_airslash", (accessor) -> new AirSlashAnimation(0.0F, 0.1F, 0.15F, 0.4F, ColliderPreset.DUAL_SWORD_AIR_SLASH, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
-                .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,4.1F));
+        DUAL_PISTOL_AIRSLASH = builder.nextAccessor("biped/combat/dual_pistol_airslash", (accessor) -> new AirSlashAnimation(0.1F, 0.4F, 0.8F, 1.0F, ColliderPreset.DUAL_SWORD_AIR_SLASH, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,2.1F));
         CEREMONIAL_PISTOL_AIM = builder.nextAccessor("biped/combat/ceremonial_pistol_aim", (accessor) -> new AimAnimation(true, accessor, "biped/combat/ceremonial_pistol_aim_mid", "biped/combat/ceremonial_pistol_aim_up", "biped/combat/ceremonial_pistol_aim_down", "biped/combat/ceremonial_pistol_aim_lying", Armatures.BIPED));
         CEREMONIAL_PISTOL_AUTO_1 = builder.nextAccessor("biped/combat/ceremonial_pistol_auto_1", (accessor) ->
                 new BasicAttackAnimation(0.1F, 0.2F, 0.3F, 0.5F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
@@ -197,5 +198,6 @@ public class MusketAnimations {
                 new AttackAnimation(0.08F, 0.1F, 0.4F, 0.6F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, false)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.4F));
+        RECRUIT_SPEAR_LIVING = builder.nextAccessor("biped/living/recruit_spear_living", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
     }
 }

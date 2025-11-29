@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import ewewukek.musketmod.GunItem;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -55,6 +57,10 @@ public class LastPushSkill extends WeaponInnateSkill {
                 List<LivingEntity> hurtEntities = event.getPlayerPatch().getCurrentlyActuallyHitEntities();
 
                 if (!hurtEntities.isEmpty() && hurtEntities.get(0).isAlive()) {
+                    event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
+                    event.getPlayerPatch().reserveAnimation(this.third);
+                    event.getPlayerPatch().getCurrentlyActuallyHitEntities().clear();
+                } if (!hurtEntities.isEmpty() && hurtEntities.get(0).isAlive()) {
                     event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
                     event.getPlayerPatch().reserveAnimation(this.third);
                     event.getPlayerPatch().getCurrentlyActuallyHitEntities().clear();

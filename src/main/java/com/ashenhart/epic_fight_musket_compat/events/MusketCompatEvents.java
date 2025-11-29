@@ -9,7 +9,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import yesman.epicfight.api.forgeevent.EntityPatchRegistryEvent;
 import yesman.epicfight.gameasset.Armatures;
 
-@Mod.EventBusSubscriber(modid = Epic_fight_musket_compat.MODID)
+@Mod.EventBusSubscriber(modid = Epic_fight_musket_compat.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class MusketCompatEvents {
 
     @SubscribeEvent
