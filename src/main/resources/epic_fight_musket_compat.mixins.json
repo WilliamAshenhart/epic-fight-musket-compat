@@ -9,7 +9,8 @@
     "common.MixinMobPatch",
     "common.MixinPillagerPatch",
     "common.MixinRangedGunAttackGoal",
-    "common.MixinSkeletonPatch"
+    "common.MixinSkeletonPatch",
+    "common.MixinHumanoidMobPatch"
   ],
   "client": [
   ],

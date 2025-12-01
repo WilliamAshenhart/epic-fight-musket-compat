@@ -1,6 +1,7 @@
 package com.ashenhart.epic_fight_musket_compat.world.capabilities.entitypatch.mob;
 
 import com.ashenhart.epic_fight_musket_compat.gameassets.MusketAnimations;
+import com.ashenhart.epic_fight_musket_compat.gameassets.MusketMobCombatBehaviours;
 import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.world.entity.PathfinderMob;
@@ -34,6 +35,8 @@ public class RecruitPatch<T extends PathfinderMob> extends AbstractRecruitPatch<
                         Pair.of(LivingMotions.WALK, MusketAnimations.RECRUIT_SPEAR_LIVING)
                 )
         ));
+        this.weaponAttackMotions.put(CapabilityItem.WeaponCategories.SPEAR, ImmutableMap.of(
+                CapabilityItem.Styles.TWO_HAND, MusketMobCombatBehaviours.RECRUIT_SPEAR));
     }
 
     @Override

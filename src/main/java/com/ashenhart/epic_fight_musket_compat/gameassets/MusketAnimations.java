@@ -1,6 +1,7 @@
 package com.ashenhart.epic_fight_musket_compat.gameassets;
 
 import com.ashenhart.epic_fight_musket_compat.Epic_fight_musket_compat;
+import ewewukek.musketmod.Sounds;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import yesman.epicfight.api.animation.types.*;
@@ -17,7 +18,6 @@ import yesman.epicfight.particle.EpicFightParticles;
 
 public class MusketAnimations {
 
-    public static AnimationAccessor<StaticAnimation> RECRUIT_SPEAR_LIVING;
     public static AnimationAccessor<StaticAnimation> HOLD_MUSKET;
     public static AnimationAccessor<StaticAnimation> HOLD_CEREMONIAL_MUSKET;
     public static AnimationAccessor<MovementAnimation> WALK_CEREMONIAL_MUSKET;
@@ -67,13 +67,18 @@ public class MusketAnimations {
     public static AnimationAccessor<BasicAttackAnimation> PISTOL_AUTO_2;
     public static AnimationAccessor<BasicAttackAnimation> PISTOL_AUTO_3;
     public static AnimationAccessor<DashAttackAnimation> PISTOL_DASH;
-    public static AnimationAccessor<StaticAnimation> HOLD_SCOPE;
+    public static AnimationAccessor<AimAnimation> AIM_SCOPE;
     public static AnimationAccessor<MovementAnimation> SNEAK_SCOPE;
     public static AnimationAccessor<StaticAnimation> KNEEL_SCOPE;
     public static AnimationAccessor<AttackAnimation> LAST_PUSH_EXECUTE;
+    public static AnimationAccessor<AttackAnimation> LAST_PUSH_EXECUTE_LOADED;
     public static AnimationAccessor<AttackAnimation> LAST_PUSH_HIT;
     public static AnimationAccessor<AttackAnimation> LAST_PUSH_TRY;
     public static AnimationAccessor<AttackAnimation> LAST_PUSH_FAIL;
+    public static AnimationAccessor<StaticAnimation> RECRUIT_SPEAR_LIVING;
+    public static AnimationAccessor<BasicAttackAnimation> RECRUIT_SPEAR_AUTO_1;
+    public static AnimationAccessor<BasicAttackAnimation> RECRUIT_SPEAR_AUTO_2;
+    public static AnimationAccessor<BasicAttackAnimation> RECRUIT_SPEAR_AUTO_3;
 
     @SubscribeEvent
     public static void registerAnimations(AnimationRegistryEvent event) {
@@ -108,23 +113,23 @@ public class MusketAnimations {
                 new BasicAttackAnimation(0.1F, 0.4F, 0.6F, 0.7F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_HIT.get())
                         .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.HIT_BLADE)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.8F));
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.3F));
         BAYONET_DASH = builder.nextAccessor("biped/combat/bayonet_dash", (accessor) ->
                 new DashAttackAnimation(0.1F, 0.2F, 0.4F, 0.6F, 0.9F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED, true)
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.6F))
                         .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_HIT.get())
                         .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.HIT_BLADE)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,2.1F));
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.3F));
         MUSKET_AUTO_1 = builder.nextAccessor("biped/combat/musket_auto_1", (accessor) ->
                 new BasicAttackAnimation(0.1F, 0.5F, 0.6F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,2.1F));
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.3F));
         MUSKET_AUTO_2 = builder.nextAccessor("biped/combat/musket_auto_2", (accessor) ->
                 new BasicAttackAnimation(0.1F, 0.3F, 0.4F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,2.1F));
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.3F));
         MUSKET_DASH = builder.nextAccessor("biped/combat/musket_dash", (accessor) ->
                 new DashAttackAnimation(0.1F, 0.2F, 0.4F, 0.6F, 0.9F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED, true)
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.6F))
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,2.1F));
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.3F));
         HOLD_PISTOL = builder.nextAccessor("biped/living/hold_pistol", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
         PISTOL_AIM = builder.nextAccessor("biped/combat/pistol_aim", (accessor) -> new AimAnimation(true, accessor, "biped/combat/pistol_aim_mid", "biped/combat/pistol_aim_up", "biped/combat/pistol_aim_down", "biped/combat/pistol_aim_lying", Armatures.BIPED));
         PISTOL_SHOT = builder.nextAccessor("biped/combat/pistol_shot", (accessor) -> new ReboundAnimation(false, accessor, "biped/combat/pistol_shot_mid", "biped/combat/pistol_shot_up", "biped/combat/pistol_shot_down", "biped/combat/pistol_shot_lying", Armatures.BIPED));
@@ -166,22 +171,22 @@ public class MusketAnimations {
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,2.6F));
         PISTOL_AUTO_1 = builder.nextAccessor("biped/combat/pistol_auto_1", (accessor) ->
                 new BasicAttackAnimation(0.1F, 0.5F, 0.6F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,2.1F));
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.5F));
         PISTOL_AUTO_2 = builder.nextAccessor("biped/combat/pistol_auto_2", (accessor) ->
                 new BasicAttackAnimation(0.1F, 0.3F, 0.4F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,2.1F));
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.5F));
         PISTOL_AUTO_3 = builder.nextAccessor("biped/combat/pistol_auto_3", (accessor) ->
                 new BasicAttackAnimation(0.1F, 0.5F, 0.6F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,2.1F));
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.5F));
         PISTOL_DASH = builder.nextAccessor("biped/combat/pistol_dash", (accessor) ->
                 new DashAttackAnimation(0.1F, 0.0F, 0.2F, 0.46F, 0.7F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED, true)
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.6F))
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,2.1F));
-        HOLD_SCOPE = builder.nextAccessor("biped/living/hold_scope", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.5F));
+        AIM_SCOPE = builder.nextAccessor("biped/combat/scope_aim", (accessor) -> new AimAnimation(true, accessor, "biped/combat/scope_aim_mid", "biped/combat/musket_aim_up", "biped/combat/musket_aim_down", "biped/combat/musket_aim_lying", Armatures.BIPED));
         KNEEL_SCOPE = builder.nextAccessor("biped/living/kneel_scope", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
         SNEAK_SCOPE = builder.nextAccessor("biped/living/sneak_musket", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
         LAST_PUSH_TRY = builder.nextAccessor("biped/skill/last_push_try", (accessor) ->
-                new AttackAnimation(1.0F, 0.4F, 0.6F, 1.6F, 2.7F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                new AttackAnimation(0.1F, 0.4F, 0.6F, 1.6F, 2.7F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, false)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F));
         LAST_PUSH_EXECUTE = builder.nextAccessor("biped/skill/last_push_execute", (accessor) ->
@@ -198,6 +203,21 @@ public class MusketAnimations {
                 new AttackAnimation(0.08F, 0.1F, 0.4F, 0.6F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, false)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.4F));
+        LAST_PUSH_EXECUTE_LOADED = builder.nextAccessor("biped/skill/last_push_execute_loaded", (accessor) ->
+                new AttackAnimation(0.15F, 0.1F, 0.3F, 0.4F, 0.8F, ColliderPreset.FIST, Armatures.BIPED.get().legL, accessor, Armatures.BIPED)
+                        .addProperty(AttackPhaseProperty.SWING_SOUND, SoundEvents.EMPTY)
+                        .addProperty(AttackPhaseProperty.HIT_SOUND, Sounds.MUSKET_FIRE)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, false)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.4F));
         RECRUIT_SPEAR_LIVING = builder.nextAccessor("biped/living/recruit_spear_living", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
+        RECRUIT_SPEAR_AUTO_1 = builder.nextAccessor("biped/combat/recruit_spear_auto_1", (accessor) ->
+                new BasicAttackAnimation(0.1F, 0.2F, 0.5F, 1.0F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.2F));
+        RECRUIT_SPEAR_AUTO_2 = builder.nextAccessor("biped/combat/recruit_spear_auto_2", (accessor) ->
+                new BasicAttackAnimation(0.1F, 0.3F, 0.4F, 1.3F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.2F));
+        RECRUIT_SPEAR_AUTO_3 = builder.nextAccessor("biped/combat/recruit_spear_auto_3", (accessor) ->
+                new BasicAttackAnimation(0.1F, 0.5F, 0.6F, 1.4F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.2F));
     }
 }

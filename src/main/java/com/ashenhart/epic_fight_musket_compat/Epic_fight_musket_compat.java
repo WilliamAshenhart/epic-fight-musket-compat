@@ -1,5 +1,6 @@
 package com.ashenhart.epic_fight_musket_compat;
 
+import com.ashenhart.epic_fight_musket_compat.events.MusketCompatScopeEvent;
 import com.ashenhart.epic_fight_musket_compat.gameassets.MusketAnimations;
 import com.ashenhart.epic_fight_musket_compat.world.capabilities.item.MusketWeaponCategories;
 import com.ashenhart.epic_fight_musket_compat.world.item.MusketItems;
@@ -23,6 +24,7 @@ public class Epic_fight_musket_compat {
     public Epic_fight_musket_compat(FMLJavaModLoadingContext eventBus) {
         IEventBus bus = eventBus.getModEventBus();
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(new MusketCompatScopeEvent());
         MusketItems.ITEMS.register(bus);
         WeaponCategory.ENUM_MANAGER.registerEnumCls(MODID, MusketWeaponCategories.class);
         bus.addListener(MusketAnimations::registerAnimations);

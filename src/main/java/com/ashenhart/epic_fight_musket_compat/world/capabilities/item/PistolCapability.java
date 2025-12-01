@@ -118,7 +118,7 @@ public class PistolCapability extends RangedWeaponCapability {
         if (entitypatch.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == MusketWeaponCategories.PISTOL) {
             return Styles.TWO_HAND;
         }
-        return Styles.RANGED;
+        return Styles.ONE_HAND;
     }
 
     @Override

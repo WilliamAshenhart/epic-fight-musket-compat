@@ -5,13 +5,33 @@ import com.ashenhart.epic_fight_musket_compat.client.renderer.patched.entity.PHu
 import com.ashenhart.epic_fight_musket_compat.client.renderer.patched.entity.PRecruitRenderer;
 import com.talhanation.recruits.config.RecruitsClientConfig;
 import com.talhanation.recruits.init.ModEntityTypes;
+import ewewukek.musketmod.ScopedMusketItem;
+import net.minecraft.client.Minecraft;
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import yesman.epicfight.api.client.forgeevent.PatchedRenderersEvent;
+import yesman.epicfight.api.forgeevent.BattleModeSustainableEvent;
 
 @Mod.EventBusSubscriber(modid = Epic_fight_musket_compat.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class MusketCompatClientEvents {
+    public static void onBattleModeSustainable(BattleModeSustainableEvent event) {
+        if (event.getPlayerPatch().isLogicalClient()) {
+            Player playerPatch =  event.getPlayerPatch().getOriginal();
+
+            if (playerPatch.isUsingItem() && playerPatch.getUseItem().getItem() instanceof ScopedMusketItem && ScopedMusketItem.isLoaded(playerPatch.getMainHandItem())) {
+                if (isFirstPerson()) {
+                    event.setCanceled(true);
+                }
+            }
+        }
+    }
+
+    private static boolean isFirstPerson() {
+        return Minecraft.getInstance().options.getCameraType().isFirstPerson();
+    }
+
     @SubscribeEvent
     public static void registerPatchedEntityRenderers(PatchedRenderersEvent.Add event) {
         if (RecruitsClientConfig.RecruitsLookLikeVillagers.get()) {

@@ -4,11 +4,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import ewewukek.musketmod.GunItem;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -23,6 +21,7 @@ import yesman.epicfight.skill.SkillBuilder;
 import yesman.epicfight.skill.SkillContainer;
 import yesman.epicfight.skill.weaponinnate.WeaponInnateSkill;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
+import yesman.epicfight.world.capabilities.entitypatch.player.ServerPlayerPatch;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import yesman.epicfight.world.effect.EpicFightMobEffects;
 import yesman.epicfight.world.entity.eventlistener.PlayerEventListener.EventType;
@@ -47,23 +46,25 @@ public class LastPushSkill extends WeaponInnateSkill {
         super.onInitiate(container);
         container.getExecutor().getEventListener().addEventListener(EventType.ATTACK_ANIMATION_END_EVENT, EVENT_UUID, (event) -> {
             if (MusketAnimations.LAST_PUSH_TRY.equals(event.getAnimation())) {
-                List<LivingEntity> hurtEntities = event.getPlayerPatch().getCurrentlyActuallyHitEntities();
-
-                event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
-                event.getPlayerPatch().reserveAnimation(this.second);
-                event.getPlayerPatch().getCurrentlyActuallyHitEntities().clear();
+                List<LivingEntity> hurtEntities = ((ServerPlayerPatch)event.getPlayerPatch()).getCurrentlyActuallyHitEntities();
+                if (!hurtEntities.isEmpty() && ((LivingEntity)hurtEntities.get(0)).isAlive()) {
+                    ((ServerPlayerPatch)event.getPlayerPatch()).stopPlaying(this.first);
+                    ((ServerPlayerPatch)event.getPlayerPatch()).reserveAnimation(this.second);
+                    ((ServerPlayerPatch)event.getPlayerPatch()).getServerAnimator().getPlayerFor((AssetAccessor)null).reset();
+                    ((ServerPlayerPatch)event.getPlayerPatch()).getCurrentlyActuallyHitEntities().clear();
+                }
+                else event.getPlayerPatch().reserveAnimation(this.second);
+                ((ServerPlayerPatch)event.getPlayerPatch()).getServerAnimator().getPlayerFor((AssetAccessor)null).reset();
+                ((ServerPlayerPatch)event.getPlayerPatch()).getCurrentlyActuallyHitEntities().clear();
             }
             if (MusketAnimations.LAST_PUSH_HIT.equals(event.getAnimation())) {
                 List<LivingEntity> hurtEntities = event.getPlayerPatch().getCurrentlyActuallyHitEntities();
+                PlayerPatch<?> playerPatch = event.getPlayerPatch();
 
                 if (!hurtEntities.isEmpty() && hurtEntities.get(0).isAlive()) {
-                    event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
-                    event.getPlayerPatch().reserveAnimation(this.third);
-                    event.getPlayerPatch().getCurrentlyActuallyHitEntities().clear();
-                } if (!hurtEntities.isEmpty() && hurtEntities.get(0).isAlive()) {
-                    event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
-                    event.getPlayerPatch().reserveAnimation(this.third);
-                    event.getPlayerPatch().getCurrentlyActuallyHitEntities().clear();
+                    ((ServerPlayerPatch)event.getPlayerPatch()).getServerAnimator().getPlayerFor(null).reset();
+                    ((ServerPlayerPatch)event.getPlayerPatch()).reserveAnimation(this.third);
+                    ((ServerPlayerPatch)event.getPlayerPatch()).getCurrentlyActuallyHitEntities().clear();
                 } else {
                     event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
                     event.getPlayerPatch().reserveAnimation(this.fail);
@@ -73,14 +74,14 @@ public class LastPushSkill extends WeaponInnateSkill {
         });
     }
 
-    @Override
     public void onRemoved(SkillContainer container) {
         container.getExecutor().getEventListener().removeListener(EventType.ATTACK_ANIMATION_END_EVENT, EVENT_UUID);
+        container.getExecutor().getEventListener().removeListener(EventType.DEAL_DAMAGE_EVENT_HURT, EVENT_UUID);
     }
 
     @Override
     public void executeOnServer(SkillContainer container, FriendlyByteBuf args) {
-        container.getExecutor().playAnimationSynchronized(this.first, 0);
+        container.getExecutor().playAnimationSynchronized(this.first, 0.0F);
         LivingEntity target = (LivingEntity) container.getExecutor().getTarget();
         ((ServerPlayer)container.getExecutor().getOriginal()).addEffect(new MobEffectInstance((MobEffect) EpicFightMobEffects.STUN_IMMUNITY.get(), 38, 0, true, false, false));
         if (target != null && target.isAlive()) {
@@ -94,6 +95,7 @@ public class LastPushSkill extends WeaponInnateSkill {
         this.generateTooltipforPhase(list, itemStack, cap, playerCap, (Map) this.properties.get(0), "Charge");
         this.generateTooltipforPhase(list, itemStack, cap, playerCap, (Map) this.properties.get(1), "Stab");
         this.generateTooltipforPhase(list, itemStack, cap, playerCap, (Map) this.properties.get(2), "Kick");
+
         return list;
     }
 
