@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "S": {
+      "tag": "minecraft:string"
+    },
+    "W": {
+      "tag": "minecraft:white_wool"
+    }
+  },
+  "pattern": [
+    "L L",
+    "LSL",
+    "LWL"
+  ],
+  "result": {
+    "item": "epic_fight_musket_compat:musketeer_vest"
+  }
+}

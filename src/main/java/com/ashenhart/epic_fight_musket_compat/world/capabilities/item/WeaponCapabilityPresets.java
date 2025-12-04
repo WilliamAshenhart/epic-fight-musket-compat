@@ -64,7 +64,7 @@ public class WeaponCapabilityPresets {
             .addAnimationsModifier(LivingMotions.SWIM, MusketAnimations.HOLD_MUSKET)
             .addAnimationsModifier(LivingMotions.RELOAD, MusketAnimations.RELOAD_MUSKET)
             .addAnimationsModifier(LivingMotions.AIM, MusketAnimations.AIM_SCOPE)
-            .addAnimationsModifier(LivingMotions.SHOT, MusketAnimations.MUSKET_SHOT)
+            .addAnimationsModifier(LivingMotions.SHOT, MusketAnimations.SCOPE_SHOT)
             .constructor(MusketCapability::new)
             .category(MusketWeaponCategories.SCOPED)
             .collider(MusketColliderPreset.MUSKET);

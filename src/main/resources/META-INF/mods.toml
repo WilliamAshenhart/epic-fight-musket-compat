@@ -61,3 +61,15 @@ mandatory = true
 versionRange = "${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"
+[[dependencies."${mod_id}"]]
+modId = "musketmod"
+mandatory = true
+versionRange = "*"
+ordering = "AFTER"
+side = "BOTH"
+[[dependencies."${mod_id}"]]
+modId = "recruits"
+mandatory = false
+versionRange = "*"
+ordering = "AFTER"
+side = "BOTH"

@@ -68,6 +68,7 @@ public class MusketAnimations {
     public static AnimationAccessor<BasicAttackAnimation> PISTOL_AUTO_3;
     public static AnimationAccessor<DashAttackAnimation> PISTOL_DASH;
     public static AnimationAccessor<AimAnimation> AIM_SCOPE;
+    public static AnimationAccessor<ReboundAnimation> SCOPE_SHOT;
     public static AnimationAccessor<MovementAnimation> SNEAK_SCOPE;
     public static AnimationAccessor<StaticAnimation> KNEEL_SCOPE;
     public static AnimationAccessor<AttackAnimation> LAST_PUSH_EXECUTE;
@@ -182,7 +183,8 @@ public class MusketAnimations {
                 new DashAttackAnimation(0.1F, 0.0F, 0.2F, 0.46F, 0.7F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED, true)
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.6F))
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.5F));
-        AIM_SCOPE = builder.nextAccessor("biped/combat/scope_aim", (accessor) -> new AimAnimation(true, accessor, "biped/combat/scope_aim_mid", "biped/combat/musket_aim_up", "biped/combat/musket_aim_down", "biped/combat/musket_aim_lying", Armatures.BIPED));
+        AIM_SCOPE = builder.nextAccessor("biped/combat/scope_aim", (accessor) -> new AimAnimation(true, accessor, "biped/combat/scope_aim_mid", "biped/combat/scope_aim_up", "biped/combat/scope_aim_down", "biped/combat/scope_aim_lying", Armatures.BIPED));
+        SCOPE_SHOT = builder.nextAccessor("biped/combat/scope_shot", (accessor) -> new ReboundAnimation(false, accessor, "biped/combat/scope_shot_mid", "biped/combat/scope_shot_up", "biped/combat/scope_shot_down", "biped/combat/scope_shot_lying", Armatures.BIPED));
         KNEEL_SCOPE = builder.nextAccessor("biped/living/kneel_scope", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
         SNEAK_SCOPE = builder.nextAccessor("biped/living/sneak_musket", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
         LAST_PUSH_TRY = builder.nextAccessor("biped/skill/last_push_try", (accessor) ->
