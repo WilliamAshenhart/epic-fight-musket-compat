@@ -1,9 +1,11 @@
 package com.ashenhart.epic_fight_musket_compat.client.renderer.patched.entity;
 
 import com.ashenhart.epic_fight_musket_compat.client.renderer.patched.layers.PatchedRecruitBiomeLayer;
+import com.ashenhart.epic_fight_musket_compat.client.renderer.patched.layers.PatchedRecruitCompanionLayer;
 import com.ashenhart.epic_fight_musket_compat.world.capabilities.entitypatch.mob.AbstractRecruitPatch;
 import com.talhanation.recruits.client.models.RecruitVillagerModel;
 import com.talhanation.recruits.client.render.layer.RecruitVillagerBiomeLayer;
+import com.talhanation.recruits.client.render.layer.RecruitVillagerCompanionLayer;
 import com.talhanation.recruits.entities.AbstractRecruitEntity;
 import net.minecraft.client.renderer.entity.*;
 import net.minecraft.world.entity.EntityType;
@@ -16,5 +18,6 @@ public class PRecruitRenderer extends PHumanoidRenderer<AbstractRecruitEntity, A
         super(Meshes.VILLAGER_ZOMBIE, context, entityType);
 
         this.addPatchedLayer(RecruitVillagerBiomeLayer.class, new PatchedRecruitBiomeLayer());
+        this.addPatchedLayer(RecruitVillagerCompanionLayer.class, new PatchedRecruitCompanionLayer());
     }
 }

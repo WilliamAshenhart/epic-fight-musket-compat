@@ -123,14 +123,14 @@ public class MusketAnimations {
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.3F));
         MUSKET_AUTO_1 = builder.nextAccessor("biped/combat/musket_auto_1", (accessor) ->
                 new BasicAttackAnimation(0.1F, 0.5F, 0.6F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.3F));
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.7F));
         MUSKET_AUTO_2 = builder.nextAccessor("biped/combat/musket_auto_2", (accessor) ->
                 new BasicAttackAnimation(0.1F, 0.3F, 0.4F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.3F));
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.7F));
         MUSKET_DASH = builder.nextAccessor("biped/combat/musket_dash", (accessor) ->
                 new DashAttackAnimation(0.1F, 0.2F, 0.4F, 0.6F, 0.9F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED, true)
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.6F))
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.3F));
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.7F));
         HOLD_PISTOL = builder.nextAccessor("biped/living/hold_pistol", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
         PISTOL_AIM = builder.nextAccessor("biped/combat/pistol_aim", (accessor) -> new AimAnimation(true, accessor, "biped/combat/pistol_aim_mid", "biped/combat/pistol_aim_up", "biped/combat/pistol_aim_down", "biped/combat/pistol_aim_lying", Armatures.BIPED));
         PISTOL_SHOT = builder.nextAccessor("biped/combat/pistol_shot", (accessor) -> new ReboundAnimation(false, accessor, "biped/combat/pistol_shot_mid", "biped/combat/pistol_shot_up", "biped/combat/pistol_shot_down", "biped/combat/pistol_shot_lying", Armatures.BIPED));
@@ -167,18 +167,18 @@ public class MusketAnimations {
                 new BasicAttackAnimation(0.1F, 0.3F, 0.4F, 0.6F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,2.6F));
         CEREMONIAL_PISTOL_DASH = builder.nextAccessor("biped/combat/ceremonial_pistol_dash", (accessor) ->
-                new DashAttackAnimation(0.1F, 0.0F, 0.2F, 0.46F, 0.7F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED, true)
+                new DashAttackAnimation(0.1F, 0.2F, 0.4F, 0.6F, 0.7F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED, true)
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.6F))
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,2.6F));
         PISTOL_AUTO_1 = builder.nextAccessor("biped/combat/pistol_auto_1", (accessor) ->
                 new BasicAttackAnimation(0.1F, 0.5F, 0.6F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.5F));
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.8F));
         PISTOL_AUTO_2 = builder.nextAccessor("biped/combat/pistol_auto_2", (accessor) ->
                 new BasicAttackAnimation(0.1F, 0.3F, 0.4F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.5F));
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.8F));
         PISTOL_AUTO_3 = builder.nextAccessor("biped/combat/pistol_auto_3", (accessor) ->
                 new BasicAttackAnimation(0.1F, 0.5F, 0.6F, 0.8F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.5F));
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.8F));
         PISTOL_DASH = builder.nextAccessor("biped/combat/pistol_dash", (accessor) ->
                 new DashAttackAnimation(0.1F, 0.0F, 0.2F, 0.46F, 0.7F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED, true)
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.6F))
