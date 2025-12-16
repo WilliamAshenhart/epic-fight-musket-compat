@@ -18,13 +18,6 @@ public class RecruitPatch<T extends PathfinderMob> extends AbstractRecruitPatch<
         super(Factions.VILLAGER);
     }
 
-
-    @Override
-    public void updateMotion(boolean considerInaction) {
-        super.commonAggressiveRangedMobUpdateMotion(considerInaction);
-
-    }
-
     @Override
     protected void setWeaponMotions() {
         super.setWeaponMotions();

@@ -30,10 +30,9 @@ public abstract class AbstractRecruitPatch<T extends PathfinderMob> extends Huma
 
     @Override
     public void updateMotion(boolean considerInaction) {
-        if (this.original.isUsingItem() && this.original.getUseItem().getItem() instanceof ShieldItem) {
+        super.commonAggressiveRangedMobUpdateMotion(considerInaction);
+        if (!this.getEntityState().turningLocked() && this.original.isUsingItem() && this.original.getUseItem().getItem() instanceof ShieldItem) {
             this.currentCompositeMotion = LivingMotions.BLOCK;
-        } else {
-            super.commonAggressiveRangedMobUpdateMotion(considerInaction);
         }
     }
 }
