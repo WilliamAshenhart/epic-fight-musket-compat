@@ -76,10 +76,6 @@ public class MusketAnimations {
     public static AnimationAccessor<AttackAnimation> LAST_PUSH_HIT;
     public static AnimationAccessor<AttackAnimation> LAST_PUSH_TRY;
     public static AnimationAccessor<AttackAnimation> LAST_PUSH_FAIL;
-    public static AnimationAccessor<StaticAnimation> RECRUIT_SPEAR_LIVING;
-    public static AnimationAccessor<BasicAttackAnimation> RECRUIT_SPEAR_AUTO_1;
-    public static AnimationAccessor<BasicAttackAnimation> RECRUIT_SPEAR_AUTO_2;
-    public static AnimationAccessor<BasicAttackAnimation> RECRUIT_SPEAR_AUTO_3;
 
     @SubscribeEvent
     public static void registerAnimations(AnimationRegistryEvent event) {
@@ -189,6 +185,7 @@ public class MusketAnimations {
         SNEAK_SCOPE = builder.nextAccessor("biped/living/sneak_musket", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
         LAST_PUSH_TRY = builder.nextAccessor("biped/skill/last_push_try", (accessor) ->
                 new AttackAnimation(0.1F, 0.4F, 0.6F, 1.6F, 2.7F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                        .addProperty(AttackPhaseProperty.SWING_SOUND, SoundEvents.EMPTY)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, false)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F));
         LAST_PUSH_EXECUTE = builder.nextAccessor("biped/skill/last_push_execute", (accessor) ->
@@ -211,15 +208,5 @@ public class MusketAnimations {
                         .addProperty(AttackPhaseProperty.HIT_SOUND, Sounds.MUSKET_FIRE)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, false)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.4F));
-        RECRUIT_SPEAR_LIVING = builder.nextAccessor("biped/living/recruit_spear_living", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
-        RECRUIT_SPEAR_AUTO_1 = builder.nextAccessor("biped/combat/recruit_spear_auto_1", (accessor) ->
-                new BasicAttackAnimation(0.1F, 0.2F, 0.5F, 1.0F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.2F));
-        RECRUIT_SPEAR_AUTO_2 = builder.nextAccessor("biped/combat/recruit_spear_auto_2", (accessor) ->
-                new BasicAttackAnimation(0.1F, 0.3F, 0.4F, 1.3F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.2F));
-        RECRUIT_SPEAR_AUTO_3 = builder.nextAccessor("biped/combat/recruit_spear_auto_3", (accessor) ->
-                new BasicAttackAnimation(0.1F, 0.5F, 0.6F, 1.4F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.2F));
     }
 }
