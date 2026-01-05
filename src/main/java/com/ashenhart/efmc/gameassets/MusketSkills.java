@@ -1,6 +1,7 @@
 package com.ashenhart.efmc.gameassets;
 
 import com.ashenhart.efmc.skill.weaponinnate.LastPushSkill;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import yesman.epicfight.api.animation.property.AnimationProperty;
 import yesman.epicfight.api.utils.math.ValueModifier;
@@ -14,12 +15,12 @@ import java.util.Set;
 import static yesman.epicfight.registry.entries.EpicFightSkills.REGISTRY;
 
 public final class MusketSkills {
-    public static final DeferredHolder<Skill, LastPushSkill> LAST_PUSH;
+    public static DeferredHolder<Skill, LastPushSkill> LAST_PUSH;
 
     private MusketSkills() {
     }
 
-    static {
+    public static void register(IEventBus eventBus)  {
 
         LAST_PUSH = REGISTRY.register("last_push", (key) -> (LastPushSkill) WeaponInnateSkill.createWeaponInnateBuilder(LastPushSkill::new)
                 .newProperty()
