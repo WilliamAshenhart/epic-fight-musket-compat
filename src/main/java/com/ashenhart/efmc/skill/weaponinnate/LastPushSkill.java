@@ -46,9 +46,16 @@ public class LastPushSkill extends WeaponInnateSkill {
     public void attackAnimationEndEvent(AttackEndEvent event, SkillContainer container) {
         if (MusketAnimations.LAST_PUSH_TRY.equals(event.getAnimation())) {
             List<LivingEntity> hurtEntities = ((ServerPlayerPatch)event.getPlayerPatch()).getCurrentlyActuallyHitEntities();
-            ((ServerPlayerPatch)event.getPlayerPatch()).reserveAnimation(this.second);
-            ((ServerPlayerPatch)event.getPlayerPatch()).getServerAnimator().getPlayerFor((AssetAccessor)null).reset();
-            ((ServerPlayerPatch)event.getPlayerPatch()).getCurrentlyActuallyHitEntities().clear();
+
+            if (!hurtEntities.isEmpty() && hurtEntities.get(0).isAlive()) {
+                ((ServerPlayerPatch)event.getPlayerPatch()).getServerAnimator().getPlayerFor(null).reset();
+                ((ServerPlayerPatch)event.getPlayerPatch()).reserveAnimation(this.second);
+                ((ServerPlayerPatch)event.getPlayerPatch()).getCurrentlyActuallyHitEntities().clear();
+            } else {
+                event.getPlayerPatch().getServerAnimator().getPlayerFor(null).reset();
+                event.getPlayerPatch().reserveAnimation(this.second);
+                event.getPlayerPatch().getCurrentlyActuallyHitEntities().clear();
+            }
         }
         if (MusketAnimations.LAST_PUSH_HIT.equals(event.getAnimation())) {
             List<LivingEntity> hurtEntities = event.getPlayerPatch().getCurrentlyActuallyHitEntities();

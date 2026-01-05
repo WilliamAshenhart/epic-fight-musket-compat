@@ -5,7 +5,6 @@ import com.ashenhart.efmc.gameassets.MusketAnimations;
 import com.ashenhart.efmc.gameassets.MusketSkills;
 import com.ashenhart.efmc.world.capabilities.item.WeaponCapabilityPresets;
 import com.ashenhart.efmc.world.item.MusketItems;
-import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
