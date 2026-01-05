@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": {
+      "item": "minecraft:leather"
+    },
+    "F": {
+      "item": "minecraft:feather"
+    },
+    "I": {
+      "item": "minecraft:iron_nugget"
+    },
+    "B": {
+      "item": "minecraft:blue_dye"
+    }
+  },
+  "pattern": [
+    "FX ",
+    "XIX",
+    " B "
+  ],
+  "result": {
+    "item": "epic_fight_musket_compat:musketeer_hat"
+  },
+  "show_notification": true
+}

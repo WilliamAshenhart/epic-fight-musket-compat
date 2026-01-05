@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": {
+      "item": "minecraft:leather"
+    },
+    "W": {
+      "item": "minecraft:white_wool"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    "WSW",
+    "X X",
+    "X X"
+  ],
+  "result": {
+    "item": "epic_fight_musket_compat:musketeer_trousers"
+  },
+  "show_notification": true
+}
